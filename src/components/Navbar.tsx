@@ -335,13 +335,7 @@ const Navbar = () => {
                 AAxon
               </Link>
 
-              {/* Case Studies */}
-              <Link
-                href="/case-studies"
-                className="px-2 py-2 text-white hover:text-blue-300 font-medium transition-all duration-200 text-base"
-              >
-                Case Studies
-              </Link>
+             
 
               {/* Resources */}
               <div
@@ -432,18 +426,16 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* CTA Button - Desktop */}
-            <div className="hidden lg:flex items-center flex-shrink-0">
-              <Link
-                href="/contact"
-                className="px-8 py-3 bg-[#4a90e2] text-white rounded font-semibold hover:bg-[#357abd] transition-all duration-200 text-base flex items-center gap-2 shadow-lg"
-              >
-                Contact Us
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
+          {/* CTA Button - Desktop */}
+<div className="hidden lg:flex items-center gap-3 flex-shrink-0">
+  <Link
+    href="/contact"
+    className="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-200 text-sm xl:text-base hover:from-blue-700 hover:to-blue-900"
+  >
+    Get Started
+  </Link>
+</div>
+
 
             {/* Mobile Menu Button */}
             <button
@@ -487,9 +479,9 @@ const Navbar = () => {
                   AAxon
                 </Link>
                 
-                <Link href="/case-studies" className="block px-4 py-2 text-white" onClick={() => setIsOpen(false)}>
+                {/* <Link href="/case-studies" className="block px-4 py-2 text-white" onClick={() => setIsOpen(false)}>
                   Case Studies
-                </Link>
+                </Link> */}
               </div>
 
               <div className="mt-6 px-4">

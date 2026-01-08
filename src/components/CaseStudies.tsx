@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 
 const CaseStudies = () => {
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
@@ -184,15 +185,13 @@ const CaseStudies = () => {
                   </div>
 
                   {/* CTA Button */}
-                  <a
-                    href="#"
-                    className="group/link inline-flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all duration-300"
-                  >
-                    <span>Read Full Story</span>
-                    <svg className="w-5 h-5 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </a>
+               <Link
+  href="/case-studies"
+  className="text-blue-600 font-semibold hover:text-blue-800 hover:underline inline-flex items-center gap-1 hover:gap-2 transition-all"
+>
+  Read Full Story →
+</Link>
+
                 </div>
 
                 {/* Bottom Accent Line */}

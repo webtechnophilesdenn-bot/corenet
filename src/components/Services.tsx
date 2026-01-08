@@ -150,27 +150,13 @@ const Services = () => {
               </p>
 
               {/* Learn More Link */}
-              <a
-                href="#"
-                className={`inline-flex items-center gap-2 font-semibold bg-gradient-to-r ${service.color} bg-clip-text text-transparent group-hover:gap-3 transition-all duration-300`}
-              >
-                Learn More
-                <svg
-                  className={`w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300`}
-                  style={{ color: 'currentColor' }}
-                  fill="none"
-                  stroke="url(#gradient)"
-                  viewBox="0 0 24 24"
-                >
-                  <defs>
-                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#3b82f6" />
-                      <stop offset="100%" stopColor="#8b5cf6" />
-                    </linearGradient>
-                  </defs>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </a>
+           <a
+  href="#"
+  className="text-blue-600 font-semibold mt-4 inline-flex items-center gap-1 hover:gap-2 transition-all hover:underline"
+>
+  Learn More →
+</a>
+
 
               {/* Hover Glow Effect */}
               <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-300 -z-20`}></div>
