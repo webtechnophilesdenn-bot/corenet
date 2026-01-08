@@ -1,53 +1,41 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const SocialProof = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const [counters, setCounters] = useState([0, 0, 0, 0]);
-  const sectionRef = useRef<HTMLElement>(null);
-  const hasAnimated = useRef(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const stats = [
-    { value: 500, suffix: '+', label: 'Active Clients', icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' },
-    { value: 99.9, suffix: '%', label: 'Uptime SLA', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' },
-    { value: 15, suffix: '+', label: 'Years Experience', icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' },
-    { value: 50, suffix: '+', label: 'IT Specialists', icon: 'M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' }
+    { value: 500, suffix: '+', label: 'Active Clients', color: 'from-blue-500 to-blue-600' },
+    { value: 99.9, suffix: '%', label: 'Uptime SLA', color: 'from-purple-500 to-purple-600' },
+    { value: 15, suffix: '+', label: 'Years Experience', color: 'from-emerald-500 to-emerald-600' },
+    { value: 50, suffix: '+', label: 'IT Specialists', color: 'from-orange-500 to-orange-600' }
   ];
 
   const clients = [
-    { name: 'TechCorp', color: 'from-blue-600 to-blue-700' },
-    { name: 'InnovateLabs', color: 'from-purple-600 to-purple-700' },
-    { name: 'GlobalNet', color: 'from-indigo-600 to-indigo-700' },
-    { name: 'DataStream', color: 'from-cyan-600 to-cyan-700' },
-    { name: 'CloudScale', color: 'from-emerald-600 to-emerald-700' },
-    { name: 'SecureBase', color: 'from-orange-600 to-orange-700' }
+    { name: 'Microsoft', logo: 'MS', color: 'from-green-500 to-blue-500' },
+    { name: 'Amazon AWS', logo: 'AWS', color: 'from-orange-500 to-orange-600' },
+    { name: 'Google Cloud', logo: 'GC', color: 'from-red-500 to-yellow-500' },
+    { name: 'IBM', logo: 'IBM', color: 'from-blue-700 to-blue-800' },
+    { name: 'Oracle', logo: 'ORCL', color: 'from-red-600 to-red-700' },
+    { name: 'Cisco', logo: 'CSCO', color: 'from-blue-600 to-cyan-600' },
+    { name: 'VMware', logo: 'VMW', color: 'from-gray-600 to-gray-700' },
+    { name: 'Dell', logo: 'DELL', color: 'from-blue-500 to-green-500' },
+  ];
+
+  const testimonials = [
+    { quote: "Exceptional service and expertise", author: "Rajesh Kumar", company: "TechCorp" },
+    { quote: "Transformed our IT infrastructure", author: "Priya Sharma", company: "GlobalNet" },
+    { quote: "Reliable 24/7 support", author: "Amit Patel", company: "DataStream" },
   ];
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAnimated.current) {
-            setIsVisible(true);
-            hasAnimated.current = true;
-            animateCounters();
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const animateCounters = () => {
-    const duration = 2000;
-    const steps = 60;
+    setIsVisible(true);
+    
+    // Animate counters
+    const duration = 1500;
+    const steps = 50;
     const stepDuration = duration / steps;
 
     stats.forEach((stat, index) => {
@@ -58,148 +46,201 @@ const SocialProof = () => {
         currentStep++;
         const newValue = Math.min(increment * currentStep, stat.value);
         
-        setCounters((prev) => {
+        setCounters(prev => {
           const newCounters = [...prev];
           newCounters[index] = newValue;
           return newCounters;
         });
 
-        if (currentStep >= steps) {
-          clearInterval(timer);
-        }
+        if (currentStep >= steps) clearInterval(timer);
       }, stepDuration);
     });
-  };
+  }, []);
 
   return (
-    <section ref={sectionRef} className="bg-gradient-to-b from-white to-gray-50  relative overflow-hidden">
-      {/* Background Decoration */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
-        <div className="absolute top-0 left-1/4 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-block mb-4 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold uppercase tracking-wider animate-fadeIn">
-            Trusted Partners
-          </div>
-          <h2 className={`text-4xl md:text-5xl font-bold text-gray-900 mb-4 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            Trusted by Industry Leaders
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto animate-expandWidth"></div>
-        </div>
-
-        {/* Client Logos with Animation */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-20">
-          {clients.map((client, i) => (
-            <div
-              key={i}
-              className={`group relative bg-white p-6 rounded-xl flex items-center justify-center h-28 border-2 border-gray-100 hover:border-transparent transition-all duration-500 hover:scale-105 hover:-translate-y-1 cursor-pointer ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-              style={{
-                transitionDelay: `${i * 100}ms`
-              }}
-            >
-              {/* Gradient border on hover */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${client.color} rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10`}></div>
-              <div className="absolute inset-0.5 bg-white rounded-xl -z-10"></div>
-
-              {/* Logo Content */}
-              <div className="text-center">
-                <div className={`w-12 h-12 mx-auto mb-2 rounded-lg bg-gradient-to-br ${client.color} flex items-center justify-center text-white font-bold text-lg transform group-hover:scale-110 transition-transform duration-300`}>
-                  {client.name.substring(0, 2)}
-                </div>
-                <span className="text-xs font-semibold text-gray-600 group-hover:text-gray-900 transition-colors">
-                  {client.name}
-                </span>
+    <section className="bg-gradient-to-br from-slate-50 via-white to-blue-50 py-12 min-h-screen flex items-center">
+      <div className="container mx-auto px-4">
+        {/* Main Grid Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          
+          {/* Left Column - Stats & Trust Signals */}
+          <div className="space-y-8">
+            {/* Header */}
+            <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
+              <div className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-xs font-bold uppercase tracking-widest">
+                <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></div>
+                TRUSTED BY INDUSTRY LEADERS
               </div>
-
-              {/* Glow effect */}
-              <div className={`absolute inset-0 rounded-xl bg-gradient-to-br ${client.color} opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300 -z-20`}></div>
-            </div>
-          ))}
-        </div>
-
-        {/* Stats with Counter Animation */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {stats.map((stat, index) => (
-            <div
-              key={index}
-              className={`group relative text-center p-8 bg-white rounded-2xl border-2 border-gray-100 hover:border-transparent transition-all duration-500 hover:scale-105 hover:-translate-y-2 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-              style={{
-                transitionDelay: `${600 + index * 100}ms`
-              }}
-            >
-              {/* Gradient border on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-              <div className="absolute inset-0.5 bg-white rounded-2xl -z-10"></div>
-
-              {/* Icon */}
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={stat.icon} />
-                </svg>
-              </div>
-
-              {/* Counter */}
-              <div className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">
-                {index === 1 ? counters[index].toFixed(1) : Math.floor(counters[index])}
-                {stat.suffix}
-              </div>
-
-              {/* Label */}
-              <p className="text-gray-600 font-medium text-sm group-hover:text-gray-900 transition-colors">
-                {stat.label}
+              
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+                Your Trust is <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Our Success</span>
+              </h2>
+              
+              <p className="text-gray-600 text-sm leading-relaxed">
+                15+ years of delivering exceptional IT solutions to businesses worldwide. 
+                Join hundreds of satisfied clients who trust us with their technology needs.
               </p>
-
-              {/* Decorative corner accent */}
-              <div className="absolute top-2 right-2 w-8 h-8 border-t-2 border-r-2 border-blue-200 rounded-tr-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-              {/* Glow effect */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-300 -z-20"></div>
             </div>
-          ))}
+
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 gap-4">
+              {stats.map((stat, index) => (
+                <div 
+                  key={index} 
+                  className={`bg-white rounded-xl p-4 border border-gray-200 hover:border-transparent hover:shadow-lg transition-all duration-300 hover:-translate-y-1 ${
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                  }`}
+                  style={{ transitionDelay: `${index * 100}ms` }}
+                >
+                  <div className={`h-1.5 bg-gradient-to-r ${stat.color} rounded-full mb-3`}></div>
+                  <div className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent mb-1">
+                    {index === 1 ? counters[index].toFixed(1) : Math.floor(counters[index])}
+                    {stat.suffix}
+                  </div>
+                  <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Mini Testimonials */}
+            <div className={`bg-gradient-to-br from-blue-50 to-white rounded-xl p-4 border border-blue-100 transition-all duration-700 delay-300 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}>
+              <div className="flex items-center gap-2 mb-3">
+                <div className="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <span className="text-sm font-bold text-gray-900">4.9/5 Rating</span>
+              </div>
+              <p className="text-sm text-gray-600 italic mb-2">"Professional team, excellent results. Highly recommended!"</p>
+              <div className="flex items-center gap-2">
+                <div className="flex -space-x-2">
+                  {['RK', 'PS', 'AP', '+47'].map((initials, i) => (
+                    <div key={i} className={`w-8 h-8 rounded-full bg-gradient-to-br ${
+                      i === 3 ? 'from-gray-400 to-gray-500 text-white' : 'from-blue-500 to-purple-500 text-white'
+                    } flex items-center justify-center text-xs font-bold border-2 border-white`}>
+                      {initials}
+                    </div>
+                  ))}
+                </div>
+                <div className="text-xs text-gray-500">
+                  <span className="font-bold">47+</span> Client Reviews
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column - Client Logos & Awards */}
+          <div className="space-y-8">
+            {/* Client Logos Grid */}
+            <div className={`transition-all duration-700 delay-200 ${
+              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
+            }`}>
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-bold text-gray-900">Technology Partners</h3>
+                <div className="text-xs text-blue-600 font-semibold">Certified</div>
+              </div>
+              
+              <div className="grid grid-cols-4 gap-3">
+                {clients.map((client, index) => (
+                  <div 
+                    key={index}
+                    className={`bg-white rounded-lg p-3 border border-gray-200 hover:border-transparent hover:shadow-md transition-all duration-300 hover:-translate-y-1 ${
+                      isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                    }`}
+                    style={{ transitionDelay: `${400 + index * 50}ms` }}
+                  >
+                    <div className={`h-12 rounded-lg bg-gradient-to-br ${client.color} flex items-center justify-center text-white font-bold text-sm`}>
+                      {client.logo}
+                    </div>
+                    <div className="mt-2 text-center">
+                      <div className="text-xs font-semibold text-gray-700 truncate">{client.name}</div>
+                      <div className="text-[10px] text-gray-500">Partner</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Certifications & Awards */}
+            <div className={`bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-xl p-5 transition-all duration-700 delay-300 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}>
+              <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
+                <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                Awards & Certifications
+              </h3>
+              
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { name: 'ISO 27001', desc: 'Security Certified' },
+                  { name: 'Microsoft Gold', desc: 'Partner Status' },
+                  { name: 'AWS Advanced', desc: 'Tier Partner' },
+                  { name: 'Google Cloud', desc: 'Premier Partner' },
+                ].map((cert, i) => (
+                  <div key={i} className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
+                    <div className="text-xs font-bold text-white">{cert.name}</div>
+                    <div className="text-[10px] text-gray-300">{cert.desc}</div>
+                  </div>
+                ))}
+              </div>
+              
+              <div className="mt-4 pt-4 border-t border-white/10">
+                <div className="flex items-center justify-between text-xs">
+                  <div className="text-gray-300">Industry Recognition</div>
+                  <div className="flex items-center gap-1">
+                    <span className="text-yellow-400">★★★★★</span>
+                    <span className="font-bold">2026</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Stats Bar */}
+            <div className={`grid grid-cols-3 gap-2 transition-all duration-700 delay-400 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}>
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-3 text-center">
+                <div className="text-lg font-bold text-blue-600">98%</div>
+                <div className="text-xs text-gray-600">Client Retention</div>
+              </div>
+              <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-3 text-center">
+                <div className="text-lg font-bold text-purple-600">24/7</div>
+                <div className="text-xs text-gray-600">Support</div>
+              </div>
+              <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-lg p-3 text-center">
+                <div className="text-lg font-bold text-emerald-600">1hr</div>
+                <div className="text-xs text-gray-600">Response Time</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom CTA */}
+        <div className={`mt-10 pt-8 border-t border-gray-200 text-center transition-all duration-700 delay-500 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`}>
+          <p className="text-sm text-gray-600 mb-3">Join our growing list of satisfied clients</p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <button className="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-blue-500/30 hover:scale-105 transition-all">
+              Schedule Free Audit
+            </button>
+            <button className="px-6 py-2.5 bg-white border border-blue-600 text-blue-600 rounded-full text-sm font-semibold hover:bg-blue-50 transition-all">
+              View Case Studies →
+            </button>
+          </div>
         </div>
       </div>
 
-      <style jsx>{`
-        @keyframes blob {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          33% { transform: translate(30px, -50px) scale(1.1); }
-          66% { transform: translate(-20px, 20px) scale(0.9); }
-        }
-
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes expandWidth {
-          from { width: 0; }
-          to { width: 6rem; }
-        }
-
-        .animate-fadeIn {
-          animation: fadeIn 0.8s ease-out forwards;
-        }
-
-        .animate-expandWidth {
-          animation: expandWidth 0.8s ease-out forwards;
-        }
-
-        .animate-blob {
-          animation: blob 7s infinite;
-        }
-
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-      `}</style>
+      {/* Background Elements */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10"></div>
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10"></div>
     </section>
   );
 };
