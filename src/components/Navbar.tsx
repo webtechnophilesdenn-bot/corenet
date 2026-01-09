@@ -204,19 +204,14 @@ const Navbar = () => {
           <div className="flex justify-between items-center py-4">
             {/* Logo */}
             <Link href="/" className="flex items-center flex-shrink-0">
-              <div className="flex items-center gap-2">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
-                  </svg>
-                </div>
-                <div>
-                  <div className="text-white font-bold text-lg leading-tight">ALIGNED</div>
-                  <div className="text-blue-300 text-xs font-semibold tracking-wide">AUTOMATION</div>
-                </div>
-              </div>
-            </Link>
-
+  <div className="flex items-center gap-2">
+    <img 
+      src="/logo.png" 
+      alt="CORENET Logo" 
+      className="h-10 w-auto"
+    />
+  </div>
+</Link>
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-8">
               {/* Industries */}
