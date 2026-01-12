@@ -26,33 +26,32 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-      {/* Hero Section with Compact Form */}
-      <section className="bg-gradient-to-br bg-black py-8 md:py-12 relative overflow-hidden">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-20 w-72 h-72 bg-white rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-300 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+      {/* Hero Section with White Background - ORIGINAL DIMENSIONS */}
+      <section className="bg-white py-8 md:py-12 relative overflow-hidden">
+        {/* Subtle Background Elements - Same positioning/sizing */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 left-20 w-72 h-72 bg-blue-100 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-indigo-100 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
         </div>
 
         <div className="container mx-auto px-4 max-w-7xl w-full relative z-10">
-          {/* Header */}
+          {/* Header - ORIGINAL SIZING */}
           <div className="text-center mb-8">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 tracking-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4 tracking-tight">
               Get In Touch
             </h1>
-            <p className="text-lg md:text-xl text-blue-50 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Have a project in mind? Let's discuss how we can help transform
               your business with innovative IT solutions.
             </p>
           </div>
 
-          {/* Two Column Layout - Compact */}
+          {/* Two Column Layout - ORIGINAL SPACING */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-            {/* Left: Contact Information */}
+            {/* Left: Contact Information - ORIGINAL DIMENSIONS */}
             <div className="space-y-6">
-              {/* Contact Details Card */}
-              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-xl hover:bg-white/15 transition-all duration-300">
-                <h2 className="text-2xl font-bold mb-6 text-white flex items-center gap-2">
+              <div className="bg-white/90 backdrop-blur-md rounded-2xl p-6 border border-gray-200/50 shadow-xl hover:bg-white hover:border-gray-300 transition-all duration-300">
+                <h2 className="text-2xl font-bold mb-6 text-gray-900 flex items-center gap-2">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                   </svg>
@@ -67,8 +66,8 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-lg text-white mb-1">Phone</h3>
-                      <a href="tel:+919028501604" className="text-blue-100 hover:text-white transition-colors font-medium">
+                      <h3 className="font-semibold text-lg text-gray-900 mb-1">Phone</h3>
+                      <a href="tel:+919028501604" className="text-blue-600 hover:text-blue-700 transition-colors font-medium text-lg">
                         +91 9028501604
                       </a>
                     </div>
@@ -81,8 +80,8 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-lg text-white mb-1">Email</h3>
-                      <a href="mailto:sales@corenet.co.in" className="text-blue-100 hover:text-white transition-colors font-medium">
+                      <h3 className="font-semibold text-lg text-gray-900 mb-1">Email</h3>
+                      <a href="mailto:sales@corenet.co.in" className="text-gray-800 hover:text-blue-600 transition-colors font-medium">
                         sales@corenet.co.in
                       </a>
                     </div>
@@ -96,8 +95,8 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-lg text-white mb-1">Address</h3>
-                      <p className="text-blue-100">Indore, Madhya Pradesh, India</p>
+                      <h3 className="font-semibold text-lg text-gray-900 mb-1">Address</h3>
+                      <p className="text-gray-700 font-medium">Indore, Madhya Pradesh, India</p>
                     </div>
                   </div>
 
@@ -108,21 +107,19 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-lg text-white mb-1">Business Hours</h3>
-                      <p className="text-blue-100 text-sm leading-relaxed">
+                      <h3 className="font-semibold text-lg text-gray-900 mb-1">Business Hours</h3>
+                      <p className="text-gray-700 text-sm leading-relaxed">
                         Mon-Fri: 9AM-6PM IST<br />
                         Sat: 9AM-1PM IST<br />
-                        <span className="text-yellow-300 font-bold">24/7 Support Available</span>
+                        <span className="text-green-600 font-bold">24/7 Support Available</span>
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
-
-            
             </div>
 
-            {/* Right: Compact Contact Form */}
+            {/* Right: Compact Contact Form - ORIGINAL DIMENSIONS */}
             <div className="bg-white rounded-2xl shadow-2xl p-5 border-t-4 border-blue-500 hover:shadow-blue-500/20 transition-all duration-300">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
@@ -256,7 +253,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Map Section */}
+      {/* Map Section - UNCHANGED */}
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4 max-w-8xl">
           <div className="text-center mb-8">
@@ -281,7 +278,6 @@ export default function ContactPage() {
             ></iframe>
           </div>
 
-          {/* Location Details */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
             {[
               { icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z", title: "Office Location", text: "Indore, Madhya Pradesh, India", gradient: "from-blue-400 to-blue-600" },
@@ -302,7 +298,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section - UNCHANGED */}
       <section className="py-16 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>

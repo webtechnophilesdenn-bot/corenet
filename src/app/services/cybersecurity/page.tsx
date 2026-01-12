@@ -43,9 +43,9 @@ export default function CybersecurityPage() {
               <h3 className="text-xl font-bold text-gray-800 text-center mb-3">Threat Detection</h3>
               <p className="text-gray-600 mb-4 text-center text-sm leading-tight">AI-powered threat hunting & EDR</p>
               <div className="space-y-2 px-2">
-                <div className="flex items-center justify-center text-xs"><span className="text-red-600 mr-2">✓</span><span>SIEM</span></div>
-                <div className="flex items-center justify-center text-xs"><span className="text-red-600 mr-2">✓</span><span>XDR</span></div>
-                <div className="flex items-center justify-center text-xs"><span className="text-red-600 mr-2">✓</span><span>SOAR</span></div>
+                <div className="flex items-center justify-center text-xs"><span className="text-red-600 mr-2">✓</span><span className="text-black">SIEM</span></div>
+                <div className="flex items-center justify-center text-xs"><span className="text-red-600 mr-2">✓</span><span className="text-black">XDR</span></div>
+                <div className="flex items-center justify-center text-xs"><span className="text-red-600 mr-2">✓</span><span className="text-black">SOAR</span></div>
               </div>
             </div>
 
@@ -60,9 +60,9 @@ export default function CybersecurityPage() {
               <h3 className="text-xl font-bold text-gray-800 text-center mb-3">Identity Protection</h3>
               <p className="text-gray-600 mb-4 text-center text-sm leading-tight">Zero-trust IAM solutions</p>
               <div className="space-y-2 px-2">
-                <div className="flex items-center justify-center text-xs"><span className="text-orange-600 mr-2">✓</span><span>MFA</span></div>
-                <div className="flex items-center justify-center text-xs"><span className="text-orange-600 mr-2">✓</span><span>SSO</span></div>
-                <div className="flex items-center justify-center text-xs"><span className="text-orange-600 mr-2">✓</span><span>Privileged Access</span></div>
+                <div className="flex items-center justify-center text-xs"><span className="text-orange-600 mr-2">✓</span><span className="text-black">MFA</span></div>
+                <div className="flex items-center justify-center text-xs"><span className="text-orange-600 mr-2">✓</span><span className="text-black">SSO</span></div>
+                <div className="flex items-center justify-center text-xs"><span className="text-orange-600 mr-2">✓</span><span className="text-black">Privileged Access</span></div>
               </div>
             </div>
 
@@ -77,9 +77,9 @@ export default function CybersecurityPage() {
               <h3 className="text-xl font-bold text-gray-800 text-center mb-3">Cloud Security</h3>
               <p className="text-gray-600 mb-4 text-center text-sm leading-tight">CSPM & CWPP solutions</p>
               <div className="space-y-2 px-2">
-                <div className="flex items-center justify-center text-xs"><span className="text-blue-600 mr-2">✓</span><span>CSPM</span></div>
-                <div className="flex items-center justify-center text-xs"><span className="text-blue-600 mr-2">✓</span><span>CWPP</span></div>
-                <div className="flex items-center justify-center text-xs"><span className="text-blue-600 mr-2">✓</span><span>CASB</span></div>
+                <div className="flex items-center justify-center text-xs"><span className="text-blue-600 mr-2">✓</span><span className="text-black">CSPM</span></div>
+                <div className="flex items-center justify-center text-xs"><span className="text-blue-600 mr-2">✓</span><span className="text-black">CWPP</span></div>
+                <div className="flex items-center justify-center text-xs"><span className="text-blue-600 mr-2">✓</span><span className="text-black">CASB</span></div>
               </div>
             </div>
 
@@ -94,9 +94,9 @@ export default function CybersecurityPage() {
               <h3 className="text-xl font-bold text-gray-800 text-center mb-3">Penetration Testing</h3>
               <p className="text-gray-600 mb-4 text-center text-sm leading-tight">Red team & vulnerability assessment</p>
               <div className="space-y-2 px-2">
-                <div className="flex items-center justify-center text-xs"><span className="text-indigo-600 mr-2">✓</span><span>Red Team</span></div>
-                <div className="flex items-center justify-center text-xs"><span className="text-indigo-600 mr-2">✓</span><span>Web App Testing</span></div>
-                <div className="flex items-center justify-center text-xs"><span className="text-indigo-600 mr-2">✓</span><span>Cloud Testing</span></div>
+                <div className="flex items-center justify-center text-xs"><span className="text-indigo-600 mr-2">✓</span><span className="text-black">Red Team</span></div>
+                <div className="flex items-center justify-center text-xs"><span className="text-indigo-600 mr-2">✓</span><span className="text-black">Web App Testing</span></div>
+                <div className="flex items-center justify-center text-xs"><span className="text-indigo-600 mr-2">✓</span><span className="text-black">Cloud Testing</span></div>
               </div>
             </div>
           </div>
