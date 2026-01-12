@@ -1,7 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { FaInstagram, FaFacebookF, FaLinkedinIn, FaWhatsapp, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import Image from "next/image";
+import {
+  FaInstagram,
+  FaFacebookF,
+  FaLinkedinIn,
+  FaWhatsapp,
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaEnvelope,
+} from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -12,7 +21,17 @@ const Footer = () => {
 
           {/* Brand Section */}
           <div>
-            <h3 className="text-2xl font-bold tracking-wide mb-2">CORENET</h3>
+            <Link href="/" className="inline-block mb-2">
+              <Image
+                src="/logo.png"          // <-- your logo in /public
+                alt="CORENET Logo"
+                width={160}
+                height={50}
+                className="object-contain"
+                priority
+              />
+            </Link>
+
             <p className="text-sm text-gray-400 mb-4">
               Connecting World With Solutions
             </p>
@@ -60,16 +79,12 @@ const Footer = () => {
 
               <li className="flex gap-3">
                 <FaPhoneAlt className="mt-1 text-blue-400" />
-                <span>
-                  <a href="tel:+919999999999">+91 99999 99999</a>
-                </span>
+                <a href="tel:+919999999999">+91 99999 99999</a>
               </li>
 
               <li className="flex gap-3">
                 <FaEnvelope className="mt-1 text-blue-400" />
-                <span>
-                  <a href="mailto:info@corenet.com">info@corenet.com</a>
-                </span>
+                <a href="mailto:info@corenet.com">info@corenet.com</a>
               </li>
             </ul>
           </div>
