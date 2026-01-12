@@ -15,7 +15,8 @@ const Services = () => {
       ),
       title: "Cloud Solutions",
       description: "Scalable cloud infrastructure, migration, and optimization for AWS, Azure, and Google Cloud.",
-      color: "from-blue-500 to-blue-600"
+      color: "from-blue-500 to-blue-600",
+      href: "/services/cloud-solutions"
     },
     {
       icon: (
@@ -25,7 +26,8 @@ const Services = () => {
       ),
       title: "Cybersecurity",
       description: "Advanced threat protection, compliance management, and security audits.",
-      color: "from-purple-500 to-purple-600"
+      color: "from-purple-500 to-purple-600",
+      href: "/services/cybersecurity"
     },
     {
       icon: (
@@ -35,7 +37,8 @@ const Services = () => {
       ),
       title: "IT Consulting",
       description: "Strategic technology planning and digital transformation consulting.",
-      color: "from-indigo-500 to-indigo-600"
+      color: "from-indigo-500 to-indigo-600",
+      href: "/services/it-consulting"
     },
     {
       icon: (
@@ -46,7 +49,8 @@ const Services = () => {
       ),
       title: "Managed IT",
       description: "Proactive monitoring, maintenance, and 24/7 technical support.",
-      color: "from-cyan-500 to-cyan-600"
+      color: "from-cyan-500 to-cyan-600",
+      href: "/services/managed-it"
     },
     {
       icon: (
@@ -56,7 +60,8 @@ const Services = () => {
       ),
       title: "Data Analytics",
       description: "Business intelligence, data warehousing, and advanced analytics.",
-      color: "from-emerald-500 to-emerald-600"
+      color: "from-emerald-500 to-emerald-600",
+      href: "/services/data-analytics"
     },
     {
       icon: (
@@ -66,7 +71,64 @@ const Services = () => {
       ),
       title: "Network Solutions",
       description: "Managed internet lease lines, SD-WAN, and enterprise networking.",
-      color: "from-orange-500 to-orange-600"
+      color: "from-orange-500 to-orange-600",
+      href: "/services/network-solutions"
+    },
+    {
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+      ),
+      title: "DevOps",
+      description: "Continuous integration, deployment automation, and infrastructure as code.",
+      color: "from-red-500 to-red-600",
+      href: "/services/devops"
+    },
+    {
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+        </svg>
+      ),
+      title: "App & Mobile Development",
+      description: "Custom mobile and web applications for iOS, Android, and cross-platform.",
+      color: "from-pink-500 to-pink-600",
+      href: "/services/app-development"
+    },
+    {
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+        </svg>
+      ),
+      title: "AI & ML",
+      description: "Artificial intelligence and machine learning solutions for intelligent automation.",
+      color: "from-yellow-500 to-yellow-600",
+      href: "/services/ai-ml"
+    },
+    {
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+        </svg>
+      ),
+      title: "ISP",
+      description: "High-speed internet service provider solutions with reliable connectivity.",
+      color: "from-teal-500 to-teal-600",
+      href: "/services/isp"
+    },
+    {
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+        </svg>
+      ),
+      title: "Multi-Cloud",
+      description: "Multi-cloud management and orchestration across AWS, Azure, and Google Cloud.",
+      color: "from-violet-500 to-violet-600",
+      href: "/services/multi-cloud"
     },
   ];
 
@@ -115,7 +177,7 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {services.map((service, index) => (
             <div
               key={index}
@@ -135,27 +197,31 @@ const Services = () => {
               {/* Animated Background Shape */}
               <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${service.color} opacity-5 rounded-full transform translate-x-4 -translate-y-4 group-hover:scale-125 transition-transform duration-300`}></div>
 
-              {/* Icon Container */}
-              <div className={`relative w-12 h-12 mb-4 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center text-white transform group-hover:scale-105 transition-all duration-300`}>
-                {service.icon}
-                <div className="absolute inset-0 rounded-lg bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+              {/* Icon Container - Centered */}
+              <div className="flex justify-center mb-4">
+                <div className={`relative w-12 h-12 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center text-white transform group-hover:scale-105 transition-all duration-300`}>
+                  {service.icon}
+                  <div className="absolute inset-0 rounded-lg bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                </div>
               </div>
 
-              {/* Content */}
-              <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
+              {/* Content - Title Centered */}
+              <h3 className="text-lg font-bold text-gray-900 mb-2 text-center group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
                 {service.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed mb-3 text-xs">
+              <p className="text-gray-600 leading-relaxed mb-3 text-xs text-center">
                 {service.description}
               </p>
 
-              {/* Learn More Link */}
-              <a
-                href="#"
-                className="text-blue-600 font-semibold text-xs inline-flex items-center gap-1 hover:gap-2 transition-all"
-              >
-                Learn More →
-              </a>
+              {/* Learn More Link - Centered */}
+              <div className="text-center">
+                <a
+                  href={service.href}
+                  className="text-blue-600 font-semibold text-xs inline-flex items-center gap-1 hover:gap-2 transition-all"
+                >
+                  Learn More →
+                </a>
+              </div>
 
               {/* Hover Glow Effect */}
               <div className={`absolute inset-0 rounded-xl bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 blur-xl transition-opacity duration-300 -z-20`}></div>

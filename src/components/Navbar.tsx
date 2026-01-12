@@ -1,5 +1,5 @@
-"use client";
-import { useState, useEffect } from "react";
+'use client';
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -7,7 +7,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
-  // Data Structures
+  // Data Structures - FIXED DUPLICATE KEY ISSUE
   const industriesMenu = [
     { name: "Energy (Oil & Renewables)", href: "/industries/energy" },
     { name: "Life Sciences & Healthcare", href: "/industries/healthcare" },
@@ -21,6 +21,8 @@ const Navbar = () => {
       items: [
         { name: "ISP", href: "/services/isp" },
         { name: "Multi-Cloud", href: "/services/multi-cloud" },
+        { name: "Cloud Solutions", href: "/services/cloud-solutions" },
+        { name: "Network Solutions", href: "/services/network-solutions" },
       ],
     },
     {
@@ -31,10 +33,19 @@ const Navbar = () => {
       ],
     },
     {
+      title: "SECURITY & CONSULTING",
+      items: [
+        { name: "Cybersecurity", href: "/services/cybersecurity" },
+        { name: "IT Consulting", href: "/services/it-consulting" },
+      ],
+    },
+    {
       title: "OPERATIONS & DATA",
       items: [
         { name: "DevOps", href: "/services/devops" },
-        { name: "Data Analyst", href: "/services/data-analytics" },
+        { name: "Data Analytics Basic", href: "/services/data-analytics" },        // FIXED: Added "Basic" suffix
+        { name: "Managed IT", href: "/services/managed-it" },
+        { name: "Data Analytics Advanced", href: "/services/data-analytics-advanced" },
       ],
     },
   ];
@@ -47,7 +58,6 @@ const Navbar = () => {
   const companyMenu = [
     { name: "About Us", href: "/about" },
     { name: "Careers", href: "/careers" },
-    { name: "Sponsorships", href: "/sponsorships" },
     { name: "Leadership", href: "/leadership" },
   ];
 
@@ -101,14 +111,14 @@ const Navbar = () => {
                   <div className="absolute top-full left-0 pt-2">
                     <div className="bg-[#1a1f5c] shadow-2xl rounded-lg py-4 px-6 w-[280px] border border-blue-800/30">
                       <div className="space-y-1">
-                        {industriesMenu.map((item) => <NavItem key={item.name} {...item} />)}
+                        {industriesMenu.map((item, index) => <NavItem key={`${item.name}-${index}`} {...item} />)}
                       </div>
                     </div>
                   </div>
                 )}
               </div>
 
-              {/* Services Dropdown (3 Columns) */}
+              {/* Services Dropdown (4 Columns) */}
               <div className="relative" onMouseEnter={() => setActiveDropdown("Services")} onMouseLeave={() => setActiveDropdown(null)}>
                 <button className="px-2 py-2 text-white hover:text-blue-300 font-medium text-sm flex items-center gap-1">
                   Services
@@ -118,13 +128,15 @@ const Navbar = () => {
                 </button>
                 {activeDropdown === "Services" && (
                   <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2">
-                    <div className="bg-[#1a1f5c] shadow-2xl rounded-lg py-6 px-8 w-[700px] border border-blue-800/30">
-                      <div className="grid grid-cols-3 gap-8">
-                        {servicesMenu.map((section) => (
+                    <div className="bg-[#1a1f5c] shadow-2xl rounded-lg py-6 px-8 w-[900px] border border-blue-800/30">
+                      <div className="grid grid-cols-4 gap-8">
+                        {servicesMenu.map((section, sectionIndex) => (
                           <div key={section.title}>
                             <h3 className="text-blue-400 text-[10px] font-bold mb-3 uppercase tracking-widest">{section.title}</h3>
                             <div className="space-y-1">
-                              {section.items.map((item) => <NavItem key={item.name} {...item} />)}
+                              {section.items.map((item, itemIndex) => (
+                                <NavItem key={`${section.title}-${item.name}-${itemIndex}`} {...item} />
+                              ))}
                             </div>
                           </div>
                         ))}
@@ -146,7 +158,7 @@ const Navbar = () => {
                   <div className="absolute top-full left-0 pt-2">
                     <div className="bg-[#1a1f5c] shadow-2xl rounded-lg py-4 px-6 w-[220px] border border-blue-800/30">
                       <div className="space-y-1">
-                        {resourcesMenu.map((item) => <NavItem key={item.name} {...item} />)}
+                        {resourcesMenu.map((item, index) => <NavItem key={`${item.name}-${index}`} {...item} />)}
                       </div>
                     </div>
                   </div>
@@ -165,7 +177,7 @@ const Navbar = () => {
                   <div className="absolute top-full right-0 pt-2">
                     <div className="bg-[#1a1f5c] shadow-2xl rounded-lg py-4 px-6 w-[240px] border border-blue-800/30">
                       <div className="grid grid-cols-1 gap-1">
-                        {companyMenu.map((item) => <NavItem key={item.name} {...item} />)}
+                        {companyMenu.map((item, index) => <NavItem key={`${item.name}-${index}`} {...item} />)}
                       </div>
                     </div>
                   </div>
@@ -183,7 +195,7 @@ const Navbar = () => {
             {/* Mobile Toggle */}
             <button className="lg:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {isOpen ? <path d="M6 18L18 6M6 6l12 12" /> : <path d="M4 6h16M4 12h16M4 18h16" />}
+                {isOpen ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /> : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
               </svg>
             </button>
           </div>
@@ -195,16 +207,24 @@ const Navbar = () => {
             <div className="px-6 py-6 space-y-6">
               <div>
                 <p className="text-blue-400 text-xs font-bold uppercase mb-3">Industries</p>
-                {industriesMenu.map((item) => <NavItem key={item.name} {...item} />)}
+                {industriesMenu.map((item, index) => <NavItem key={`${item.name}-${index}`} {...item} />)}
               </div>
               <div>
                 <p className="text-blue-400 text-xs font-bold uppercase mb-3">Services</p>
                 {servicesMenu.map(sec => (
                   <div key={sec.title} className="mb-4 ml-2">
                     <p className="text-[10px] text-white/50 mb-2">{sec.title}</p>
-                    {sec.items.map(item => <NavItem key={item.name} {...item} />)}
+                    {sec.items.map((item, itemIndex) => <NavItem key={`${sec.title}-${item.name}-${itemIndex}`} {...item} />)}
                   </div>
                 ))}
+              </div>
+              <div>
+                <p className="text-blue-400 text-xs font-bold uppercase mb-3">Resources</p>
+                {resourcesMenu.map((item, index) => <NavItem key={`${item.name}-${index}`} {...item} />)}
+              </div>
+              <div>
+                <p className="text-blue-400 text-xs font-bold uppercase mb-3">Company</p>
+                {companyMenu.map((item, index) => <NavItem key={`${item.name}-${index}`} {...item} />)}
               </div>
               <Link href="/contact" className="block w-full py-3 bg-blue-600 text-white text-center rounded-lg font-bold">
                 Contact Us

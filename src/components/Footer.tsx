@@ -21,7 +21,7 @@ const Footer = () => {
 
           {/* Brand Section */}
           <div>
-            <Link href="/" className="inline-block mb-2">
+            <Link href="/" className="inline-block mb-2 mt-14">
               <Image
                 src="/logo.png"          // <-- your logo in /public
                 alt="CORENET Logo"
@@ -95,7 +95,7 @@ const Footer = () => {
             <div className="overflow-hidden rounded-lg border border-gray-700">
               <iframe
                 src="https://www.google.com/maps?q=Pune&output=embed"
-                className="w-full h-[200px]"
+                className="w-full h-50"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />

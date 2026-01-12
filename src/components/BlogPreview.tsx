@@ -85,7 +85,7 @@ const BlogPreview = () => {
         <div className="absolute bottom-1/3 right-0 w-72 h-72 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 ">
         {/* Section Header */}
         <div className="text-center mb-12">
           <div className="inline-block mb-3 px-4 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold uppercase tracking-wider">
@@ -101,7 +101,7 @@ const BlogPreview = () => {
         </div>
 
         {/* Blog Posts Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10  mx-auto">
           {blogPosts.map((post, index) => (
             <article
               key={post.id}

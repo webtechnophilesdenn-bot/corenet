@@ -4,19 +4,16 @@ import type { NextRequest } from 'next/server';
 
 export function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-
-  // PROTECT ALL /admin/* routes EXCEPT login
+  
+  // Protect admin routes except login
   if (pathname.startsWith('/admin') && !pathname.includes('/admin/login')) {
-    const cookies = request.headers.get('cookie') || '';
-    const hasAdminToken = cookies.includes('admin-token=');
-
-    if (!hasAdminToken) {
-      return NextResponse.redirect(
-        new URL('/admin/login', request.url)
-      );
+    const adminToken = request.cookies.get('admin-token');
+    
+    if (!adminToken) {
+      return NextResponse.redirect(new URL('/admin/login', request.url));
     }
   }
-
+  
   return NextResponse.next();
 }
 
