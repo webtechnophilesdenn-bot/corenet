@@ -1,8 +1,8 @@
-// src/proxy.ts - FIXED VERSION
+// src/proxy.ts
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-export function proxy(request) {
+export function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
   // PROTECT ALL /admin/* routes EXCEPT login
@@ -11,7 +11,9 @@ export function proxy(request) {
     const hasAdminToken = cookies.includes('admin-token=');
 
     if (!hasAdminToken) {
-      return NextResponse.redirect(new URL('/admin/login', request.url));
+      return NextResponse.redirect(
+        new URL('/admin/login', request.url)
+      );
     }
   }
 
@@ -19,5 +21,5 @@ export function proxy(request) {
 }
 
 export const config = {
-  matcher: ['/admin/:path*']
+  matcher: ['/admin/:path*'],
 };
