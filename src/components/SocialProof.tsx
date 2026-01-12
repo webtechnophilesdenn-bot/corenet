@@ -132,10 +132,26 @@ const SocialProof = () => {
                 </div>
               </div>
             </div>
+              <div className={`grid grid-cols-3 gap-2 transition-all duration-700 delay-400  ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}>
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-3 text-center">
+                <div className="text-lg font-bold text-blue-600">98%</div>
+                <div className="text-xs text-gray-600">Client Retention</div>
+              </div>
+              <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-3 text-center">
+                <div className="text-lg font-bold text-purple-600">24/7</div>
+                <div className="text-xs text-gray-600">Support</div>
+              </div>
+              <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-lg p-3 text-center">
+                <div className="text-lg font-bold text-emerald-600">1hr</div>
+                <div className="text-xs text-gray-600">Response Time</div>
+              </div>
+            </div>
           </div>
 
           {/* Right Column - Client Logos & Awards */}
-          <div className="space-y-8">
+          <div className="space-y-8 mt-26">
             {/* Client Logos Grid */}
             <div className={`transition-all duration-700 delay-200 ${
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
@@ -203,22 +219,7 @@ const SocialProof = () => {
             </div>
 
             {/* Quick Stats Bar */}
-            <div className={`grid grid-cols-3 gap-2 transition-all duration-700 delay-400 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}>
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-3 text-center">
-                <div className="text-lg font-bold text-blue-600">98%</div>
-                <div className="text-xs text-gray-600">Client Retention</div>
-              </div>
-              <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-3 text-center">
-                <div className="text-lg font-bold text-purple-600">24/7</div>
-                <div className="text-xs text-gray-600">Support</div>
-              </div>
-              <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-lg p-3 text-center">
-                <div className="text-lg font-bold text-emerald-600">1hr</div>
-                <div className="text-xs text-gray-600">Response Time</div>
-              </div>
-            </div>
+          
           </div>
         </div>
 

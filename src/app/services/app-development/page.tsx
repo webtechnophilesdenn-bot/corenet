@@ -1,12 +1,18 @@
-export default function Page() {
+export default function AppDevelopmentPage() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-purple-50">
-      {/* Header Section */}
-      <div className="bg-gradient-to-r from-purple-600 to-indigo-700 text-white py-16 px-8">
-        <div className="max-w-6xl mx-auto">
-          <h1 className="text-5xl font-bold mb-4">App Development Services</h1>
-          <p className="text-xl text-purple-100">
-            Transform your ideas into powerful mobile experiences with custom iOS and Android applications designed for today's connected world
+      {/* Hero Section with Background Image */}
+      <div className="relative h-120 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r  z-10"></div>
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('https://ezranking.s3.eu-west-2.amazonaws.com/blog/wp-content/uploads/2022/01/07063220/mobile-app-development-trends.png')`,}}
+        ></div>
+        <div className="relative z-20 max-w-6xl mx-auto px-8 h-full flex flex-col justify-center">
+          <h1 className="text-5xl font-bold text-white mb-4">Mobile & App Development Services</h1>
+          <p className="text-xl text-purple-100 max-w-3xl">
+            Transform your ideas into powerful mobile experiences with custom iOS and Android applications designed for today's connected world and tomorrow's innovations
           </p>
         </div>
       </div>

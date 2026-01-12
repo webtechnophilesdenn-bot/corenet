@@ -169,7 +169,7 @@ const WhyChooseUs = () => {
           </div>
 
           {/* Right Column - Certifications & Differentiators */}
-          <div className="space-y-8">
+          <div className="space-y-8 mt-30">
             {/* Certifications */}
             <div className={`transition-all duration-700 delay-200 ${
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
