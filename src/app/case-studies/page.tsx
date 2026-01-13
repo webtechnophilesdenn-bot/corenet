@@ -1,411 +1,263 @@
+// src/app/case-studies/page.tsx
 'use client';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import CaseStudyCard from '@/components/CaseStudyCard';
+import { db } from '@/lib/db';
+import { CaseStudy } from '@/types';
 import Link from 'next/link';
-
-interface CaseStudy {
-  id: string;
-  title: string;
-  slug: string;
-  client_name: string;
-  industry: string;
-  challenge: string;
-  solution: string;
-  results: string;
-  technologies: string[];
-  featured_image: string;
-  project_duration: string;
-  testimonial: string;
-  testimonial_author: string;
-  created_at: string;
-}
-
-interface Metrics {
-  label: string;
-  value: string;
-}
 
 export default function CaseStudiesPage() {
   const [caseStudies, setCaseStudies] = useState<CaseStudy[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-  const [visibleCards, setVisibleCards] = useState<number[]>([]);
-  const [selectedIndustry, setSelectedIndustry] = useState('All');
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
-
-  // Extract unique industries from case studies
-  const industries = ['All', ...Array.from(new Set(caseStudies.map(cs => cs.industry)))];
-
-  const filteredCaseStudies = selectedIndustry === 'All'
-    ? caseStudies
-    : caseStudies.filter(cs => cs.industry === selectedIndustry);
-
-  const totalPages = Math.ceil(filteredCaseStudies.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentCaseStudies = filteredCaseStudies.slice(startIndex, endIndex);
+  const [filteredCaseStudies, setFilteredCaseStudies] = useState<CaseStudy[]>([]);
+  const [selectedIndustry, setSelectedIndustry] = useState<string>('all');
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [industries, setIndustries] = useState<string[]>([]);
+  const [categories, setCategories] = useState<string[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const fetchCaseStudies = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch('/api/case-studies?published=true');
-        const data = await response.json();
-        
-        if (data.success) {
-          setCaseStudies(data.data);
-        } else {
-          setError('Failed to load case studies');
-        }
-      } catch (error) {
-        console.error(error);
-        setError('Error loading case studies');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchCaseStudies();
+    loadCaseStudies();
   }, []);
 
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [selectedIndustry]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const cards = document.querySelectorAll('.case-study-card');
-      cards.forEach((card, index) => {
-        const rect = card.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.8) {
-          setVisibleCards(prev => [...new Set([...prev, index])]);
-        }
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [currentPage, currentCaseStudies]);
-
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 400, behavior: 'smooth' });
-    setVisibleCards([]);
+  const loadCaseStudies = async () => {
+    try {
+      setLoading(true);
+      const publishedCaseStudies = await db.getPublishedCaseStudies();
+      setCaseStudies(publishedCaseStudies);
+      setFilteredCaseStudies(publishedCaseStudies);
+      
+      // Extract unique industries and categories
+      const uniqueIndustries = Array.from(new Set(publishedCaseStudies.map(cs => cs.industry)));
+      const uniqueCategories = Array.from(new Set(publishedCaseStudies.map(cs => cs.category)));
+      setIndustries(uniqueIndustries);
+      setCategories(uniqueCategories);
+    } catch (error) {
+      console.error('Failed to load case studies:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  // Helper function to extract key metrics from results
-  const extractMetrics = (results: string): Metrics[] => {
-    const metrics: Metrics[] = [];
+  useEffect(() => {
+    let filtered = caseStudies;
     
-    // Look for percentage improvements
-    const percentageMatches = results.match(/(\d+(?:\.\d+)?)%/g);
-    if (percentageMatches) {
-      percentageMatches.slice(0, 2).forEach((match, index) => {
-        metrics.push({
-          label: index === 0 ? 'Improvement' : 'Cost Reduction',
-          value: match
-        });
-      });
+    if (selectedIndustry !== 'all') {
+      filtered = filtered.filter(cs => cs.industry === selectedIndustry);
     }
     
-    // Look for time improvements
-    const timeMatches = results.match(/(\d+(?:\.\d+)?)x.*(?:faster|speed)/i);
-    if (timeMatches) {
-      metrics.push({
-        label: 'Performance Gain',
-        value: timeMatches[1] + 'x'
-      });
+    if (selectedCategory !== 'all') {
+      filtered = filtered.filter(cs => cs.category === selectedCategory);
     }
     
-    // If not enough metrics found, add placeholders
-    while (metrics.length < 2) {
-      metrics.push({
-        label: 'Success Rate',
-        value: '99%'
-      });
-    }
-    
-    return metrics.slice(0, 2);
-  };
+    setFilteredCaseStudies(filtered);
+  }, [selectedIndustry, selectedCategory, caseStudies]);
+
+  const featuredCaseStudies = caseStudies.filter(cs => cs.featured);
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 flex items-center justify-center">
-        <div className="text-xl text-gray-600">Loading case studies...</div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 flex items-center justify-center">
-        <div className="text-red-600">{error}</div>
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mb-4"></div>
+          <p className="text-gray-600">Loading case studies...</p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 text-white py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-sm font-semibold text-blue-300 mb-3 tracking-wide uppercase">
-            Client Success Stories
-          </div>
-          <h1 className="text-5xl font-bold mb-6">Case Studies</h1>
-          <p className="text-xl text-blue-100 max-w-3xl">
-            Real-world examples of how we've helped businesses transform their IT infrastructure and achieve measurable results across industries.
-          </p>
-          <div className="mt-8 flex items-center gap-4 text-sm">
-            <div className="bg-blue-800/50 px-4 py-2 rounded-full">
-              <span className="font-semibold">{caseStudies.length}</span> Published Case Studies
+      <div className="relative bg-gradient-to-r from-gray-900 to-gray-800 text-white py-16 md:py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-black opacity-20"></div>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full -mr-32 -mt-32 opacity-20"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500 rounded-full -ml-32 -mb-32 opacity-20"></div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm font-medium px-4 py-1.5 rounded-full mb-6">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Real-world Success Stories
             </div>
-            <div className="bg-green-800/50 px-4 py-2 rounded-full">
-              <span className="font-semibold">{industries.length - 1}</span> Industries Served
+            
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white leading-tight">
+              Client Success Stories
+            </h1>
+            <p className="text-xl text-gray-200 mb-8 max-w-2xl">
+              Discover how Corenet has transformed businesses across industries with innovative IT solutions and strategic partnerships.
+            </p>
+            
+            <div className="flex flex-wrap gap-4 text-sm">
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span className="text-gray-200">{caseStudies.length} Case Studies</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+                <span className="text-gray-200">{industries.length} Industries</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <span className="text-gray-200">Proven Results</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Stats Section */}
-      <div className="max-w-7xl mx-auto px-6 -mt-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="bg-white rounded-xl shadow-lg p-6 border-t-4 border-blue-600">
-            <div className="text-4xl font-bold text-slate-900 mb-2">500+</div>
-            <div className="text-slate-600 font-medium">Projects Delivered</div>
+      <div className="container mx-auto px-4 py-12 max-w-7xl">
+        {/* Featured Case Studies */}
+        {featuredCaseStudies.length > 0 && (
+          <div className="mb-16">
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <h2 className="text-3xl font-bold text-gray-900 mb-2">Featured Projects</h2>
+                <p className="text-gray-600">Highlighted success stories with exceptional results</p>
+              </div>
+              <div className="inline-flex items-center gap-2 text-blue-600 font-medium">
+                <span>⭐ Top Performers</span>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {featuredCaseStudies.slice(0, 2).map(cs => (
+                <CaseStudyCard key={cs.id} caseStudy={cs} featured />
+              ))}
+            </div>
           </div>
-          <div className="bg-white rounded-xl shadow-lg p-6 border-t-4 border-green-600">
-            <div className="text-4xl font-bold text-slate-900 mb-2">99.9%</div>
-            <div className="text-slate-600 font-medium">Client Satisfaction</div>
+        )}
+
+        {/* Filters */}
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-12">
+          <h3 className="text-xl font-bold mb-6 text-gray-900 flex items-center gap-2">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+            </svg>
+            Filter Case Studies
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-semibold mb-3 text-gray-900">Industry</label>
+              <div className="relative">
+                <select
+                  value={selectedIndustry}
+                  onChange={(e) => setSelectedIndustry(e.target.value)}
+                  className="w-full px-4 py-3.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors text-gray-900 bg-white appearance-none"
+                >
+                  <option value="all" className="text-gray-500">All Industries</option>
+                  {industries.map(industry => (
+                    <option key={industry} value={industry} className="text-gray-900">{industry}</option>
+                  ))}
+                </select>
+                <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                  <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <label className="block text-sm font-semibold mb-3 text-gray-900">Solution Category</label>
+              <div className="relative">
+                <select
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  className="w-full px-4 py-3.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors text-gray-900 bg-white appearance-none"
+                >
+                  <option value="all" className="text-gray-500">All Categories</option>
+                  {categories.map(category => (
+                    <option key={category} value={category} className="text-gray-900">{category}</option>
+                  ))}
+                </select>
+                <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                  <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="bg-white rounded-xl shadow-lg p-6 border-t-4 border-purple-600">
-            <div className="text-4xl font-bold text-slate-900 mb-2">15+</div>
-            <div className="text-slate-600 font-medium">Years Experience</div>
-          </div>
-          <div className="bg-white rounded-xl shadow-lg p-6 border-t-4 border-orange-600">
-            <div className="text-4xl font-bold text-slate-900 mb-2">24/7</div>
-            <div className="text-slate-600 font-medium">Support Available</div>
+          
+          <div className="mt-6 pt-6 border-t border-gray-100">
+            <div className="flex items-center justify-between">
+              <div className="text-sm text-gray-600">
+                <span className="font-semibold text-gray-900">{filteredCaseStudies.length}</span> of <span className="font-semibold text-gray-900">{caseStudies.length}</span> case studies match your criteria
+              </div>
+              {(selectedIndustry !== 'all' || selectedCategory !== 'all') && (
+                <button
+                  onClick={() => {
+                    setSelectedIndustry('all');
+                    setSelectedCategory('all');
+                  }}
+                  className="text-sm text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Clear filters
+                </button>
+              )}
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Filter Section */}
-      {industries.length > 1 && (
-        <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="flex flex-wrap gap-3 justify-center">
-            {industries.map((industry) => (
-              <button
-                key={industry}
-                onClick={() => setSelectedIndustry(industry)}
-                className={`px-6 py-2.5 rounded-lg font-semibold transition-all ${
-                  selectedIndustry === industry
-                    ? 'bg-blue-600 text-white shadow-lg'
-                    : 'bg-white text-slate-700 border border-slate-300 hover:border-blue-600 hover:text-blue-600 hover:shadow-md'
-                }`}
-              >
-                {industry}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Case Studies Cards Grid */}
-      <div className="max-w-7xl mx-auto px-6 pb-16">
-        <div className="mb-8 text-slate-600 font-medium">
-          Showing {startIndex + 1}-{Math.min(endIndex, filteredCaseStudies.length)} of {filteredCaseStudies.length} case studies
-        </div>
-
+        {/* Case Studies Grid */}
         {filteredCaseStudies.length === 0 ? (
-          <div className="text-center py-20">
-            <div className="text-4xl mb-4">📊</div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">No case studies found</h3>
-            <p className="text-gray-600 mb-6">No published case studies available for the selected industry.</p>
-            <button
-              onClick={() => setSelectedIndustry('All')}
-              className="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-            >
-              View All Case Studies
-            </button>
+          <div className="text-center py-16 border-2 border-dashed border-gray-200 rounded-xl bg-gray-50">
+            <svg className="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <h3 className="text-xl font-semibold text-gray-700 mb-2">No case studies found</h3>
+            <p className="text-gray-500 mb-6 max-w-md mx-auto">
+              {selectedIndustry !== 'all' || selectedCategory !== 'all'
+                ? 'Try adjusting your filters to see more results.'
+                : 'No case studies are available at the moment.'}
+            </p>
+            {(selectedIndustry !== 'all' || selectedCategory !== 'all') && (
+              <button
+                onClick={() => {
+                  setSelectedIndustry('all');
+                  setSelectedCategory('all');
+                }}
+                className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2.5 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200 text-sm font-medium shadow-sm"
+              >
+                Show All Case Studies
+              </button>
+            )}
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {currentCaseStudies.map((cs, index) => {
-                const metrics = extractMetrics(cs.results);
-                
-                return (
-                  <div
-                    key={cs.id}
-                    className={`case-study-card bg-white rounded-xl shadow-lg overflow-hidden border border-slate-200 hover:shadow-2xl transition-all duration-500 ${
-                      visibleCards.includes(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                    }`}
-                  >
-                    {/* Image */}
-                    <div className="relative h-48 bg-gradient-to-br from-slate-700 to-slate-900">
-                      {cs.featured_image ? (
-                        <img 
-                          src={cs.featured_image} 
-                          alt={cs.title}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="text-white text-6xl font-bold opacity-10">
-                            {cs.industry.charAt(0)}
-                          </div>
-                        </div>
-                      )}
-                      <div className="absolute top-4 left-4">
-                        <span className="bg-white text-slate-900 px-4 py-1.5 rounded-full text-sm font-semibold">
-                          {cs.industry}
-                        </span>
-                      </div>
-                      {cs.project_duration && (
-                        <div className="absolute top-4 right-4">
-                          <span className="bg-blue-600 text-white px-4 py-1.5 rounded-full text-sm font-semibold">
-                            {cs.project_duration}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-6">
-                      <h3 className="text-2xl font-bold text-slate-900 mb-3 leading-tight">
-                        {cs.title}
-                      </h3>
-
-                      <div className="text-sm text-slate-600 font-medium mb-4 flex items-center">
-                        <span className="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
-                        {cs.client_name}
-                      </div>
-
-                      <p className="text-slate-700 mb-6 leading-relaxed line-clamp-3">
-                        {cs.challenge}
-                      </p>
-
-                      {/* Key Metrics */}
-                      {metrics.length > 0 && (
-                        <div className="grid grid-cols-2 gap-4 mb-6">
-                          {metrics.map((metric, idx) => (
-                            <div key={idx} className="bg-slate-50 rounded-lg p-4 border border-slate-200">
-                              <div className="text-2xl font-bold text-blue-600 mb-1">
-                                {metric.value}
-                              </div>
-                              <div className="text-sm text-slate-600 font-medium">
-                                {metric.label}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-
-                      {/* Technologies */}
-                      {cs.technologies && cs.technologies.length > 0 && (
-                        <div className="flex flex-wrap gap-2 mb-6">
-                          {cs.technologies.slice(0, 3).map((tech, idx) => (
-                            <span key={idx} className="bg-blue-50 text-blue-700 px-3 py-1 rounded-md text-sm font-medium border border-blue-200">
-                              {tech}
-                            </span>
-                          ))}
-                          {cs.technologies.length > 3 && (
-                            <span className="bg-slate-100 text-slate-700 px-3 py-1 rounded-md text-sm font-medium border border-slate-300">
-                              +{cs.technologies.length - 3} more
-                            </span>
-                          )}
-                        </div>
-                      )}
-
-                      {/* CTA Button */}
-                      <Link
-                        href={`/case-studies/${cs.slug}`}
-                        className="block w-full text-center bg-slate-900 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors"
-                      >
-                        View Detailed Case Study
-                      </Link>
-                    </div>
-                  </div>
-                );
-              })}
+            <div className="mb-6">
+              <h3 className="text-2xl font-bold text-gray-900">All Case Studies</h3>
+              <p className="text-gray-600 mt-1">Browse our complete collection of client success stories</p>
             </div>
-
-            {/* Pagination */}
-            {totalPages > 1 && (
-              <div className="mt-12">
-                <div className="flex justify-center items-center gap-3 mb-4">
-                  <button
-                    onClick={() => handlePageChange(currentPage - 1)}
-                    disabled={currentPage === 1}
-                    className={`px-5 py-2.5 rounded-lg font-semibold transition-all ${
-                      currentPage === 1
-                        ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
-                        : 'bg-white text-slate-700 border border-slate-300 hover:border-blue-600 hover:text-blue-600 hover:shadow-md'
-                    }`}
-                  >
-                    Previous
-                  </button>
-
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                    <button
-                      key={page}
-                      onClick={() => handlePageChange(page)}
-                      className={`w-11 h-11 rounded-lg font-semibold transition-all ${
-                        currentPage === page
-                          ? 'bg-blue-600 text-white shadow-lg'
-                          : 'bg-white text-slate-700 border border-slate-300 hover:border-blue-600 hover:text-blue-600 hover:shadow-md'
-                      }`}
-                    >
-                      {page}
-                    </button>
-                  ))}
-
-                  <button
-                    onClick={() => handlePageChange(currentPage + 1)}
-                    disabled={currentPage === totalPages}
-                    className={`px-5 py-2.5 rounded-lg font-semibold transition-all ${
-                      currentPage === totalPages
-                        ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
-                        : 'bg-white text-slate-700 border border-slate-300 hover:border-blue-600 hover:text-blue-600 hover:shadow-md'
-                    }`}
-                  >
-                    Next
-                  </button>
-                </div>
-
-                <div className="text-center text-slate-600 font-medium">
-                  Page {currentPage} of {totalPages}
-                </div>
-              </div>
-            )}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredCaseStudies.map(caseStudy => (
+                <CaseStudyCard key={caseStudy.id} caseStudy={caseStudy} />
+              ))}
+            </div>
           </>
         )}
-      </div>
 
-      {/* CTA Section */}
-      <div className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 text-white py-20">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold mb-6">
-            Ready to Transform Your IT Infrastructure?
-          </h2>
-          <p className="text-xl text-blue-100 mb-10">
-            Let's discuss how CORENET can help you achieve similar success for your organization
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contact"
-              className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg"
-            >
-              Schedule a Consultation
-            </Link>
-            <Link
-              href="/services"
-              className="bg-white text-slate-900 px-8 py-4 rounded-lg font-semibold hover:bg-slate-100 transition-colors shadow-lg"
-            >
-              Explore Our Services
-            </Link>
-          </div>
+        {/* Back Link */}
+        <div className="mt-16 text-center">
+          <Link 
+            href="/" 
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 px-6 py-3 rounded-lg hover:from-gray-200 hover:to-gray-300 transition-all duration-200 font-medium shadow-sm border border-gray-300"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Back to Home
+          </Link>
         </div>
       </div>
     </div>
