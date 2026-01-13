@@ -195,6 +195,36 @@ class Database {
     }
   }
 
+
+
+  async getBlogBySlug(slug: string): Promise<Blog | null> {
+  if (!slug) {
+    console.log('❌ No slug provided');
+    return null;
+  }
+
+  try {
+    console.log(`🔍 Getting blog by slug: ${slug}`);
+    // Use existing /blogs endpoint and filter client-side
+    const blogs = await this.getBlogs();
+    const blog = blogs.find(b => b.slug === slug && b.status === 'published');
+    
+    if (!blog) {
+      console.log('❌ No blog found for slug:', slug);
+      return null;
+    }
+    
+    console.log('✅ Found blog:', blog.title);
+    return blog;
+  } catch (error) {
+    console.warn(`⚠️ Error fetching blog slug: ${slug}`, error);
+    // Fallback to mock data
+    const mockBlogs = this.getMockBlogs();
+    return mockBlogs.find(b => b.slug === slug && b.status === 'published') || null;
+  }
+}
+
+
   // ==================== CASE STUDY METHODS ====================
   async getCaseStudies(): Promise<CaseStudy[]> {
     try {
@@ -250,6 +280,35 @@ class Database {
       return this.getMockCaseStudies().filter(cs => cs.status === 'published');
     }
   }
+
+
+  async getCaseStudyBySlug(slug: string): Promise<CaseStudy | null> {
+  if (!slug) {
+    console.log('❌ No slug provided');
+    return null;
+  }
+
+  try {
+    console.log(`🔍 Getting case study by slug: ${slug}`);
+    // Use existing /case-studies endpoint and filter client-side
+    const caseStudies = await this.getCaseStudies();
+    const caseStudy = caseStudies.find(cs => cs.slug === slug);
+    
+    if (!caseStudy) {
+      console.log('❌ No case study found for slug:', slug);
+      return null;
+    }
+    
+    console.log('✅ Found case study:', caseStudy.title);
+    return caseStudy;
+  } catch (error) {
+    console.warn(`⚠️ Error fetching case study slug: ${slug}`, error);
+    // Fallback to mock data
+    const mockCaseStudies = this.getMockCaseStudies();
+    return mockCaseStudies.find(cs => cs.slug === slug) || null;
+  }
+}
+
 
   async addCaseStudy(caseStudyData: Omit<CaseStudy, 'id' | 'createdAt'>): Promise<CaseStudy> {
     try {
@@ -317,48 +376,49 @@ class Database {
 
   // ==================== MOCK DATA ====================
   private getMockBlogs(): Blog[] {
-    console.log('📚 Returning mock blogs data');
-    return [
-      {
-        id: 1,
-        title: 'Getting Started with Cybersecurity',
-        slug: 'getting-started-with-cybersecurity',
-        excerpt: 'Learn the basics of cybersecurity for your business',
-        content: 'Full content here...',
-        author: 'John Doe',
-        authorRole: 'Security Expert',
-        category: 'Cybersecurity',
-        tags: ['security', 'beginners'],
-        image: '',
-        readTime: 5,
-        featured: true,
-        status: 'published',
-        views: 100,
-        createdAt: '2024-01-15T10:30:00Z',
-        updatedAt: '2024-01-16T11:20:00Z',
-        publishedAt: '2024-01-15T10:30:00Z'
-      },
-      {
-        id: 2,
-        title: 'Cloud Migration Best Practices',
-        slug: 'cloud-migration-best-practices',
-        excerpt: 'How to successfully migrate to the cloud',
-        content: 'Migration strategies...',
-        author: 'Jane Smith',
-        authorRole: 'Cloud Architect',
-        category: 'Data Center',
-        tags: ['cloud', 'migration'],
-        image: '',
-        readTime: 8,
-        featured: false,
-        status: 'draft',
-        views: 50,
-        createdAt: '2024-01-10T14:20:00Z',
-        updatedAt: '2024-01-10T14:20:00Z',
-        publishedAt: undefined
-      }
-    ];
-  }
+  console.log('📚 Returning mock blogs data');
+  return [
+    {
+      id: 1,
+      title: 'Getting Started with Cybersecurity',
+      slug: 'getting-started-with-cybersecurity', // ✅ Matches BlogCard link
+      excerpt: 'Learn the basics of cybersecurity for your business and protect your digital assets effectively.',
+      content: 'Cybersecurity is no longer optional. In this comprehensive guide, we cover the essential principles, common threats, and practical steps every business should take to secure their operations. From firewalls to employee training, discover how to build a robust security posture that scales with your business.\n\nKey topics include:\n- Understanding modern threat landscape\n- Implementing multi-layered defense\n- Creating effective security policies\n- Employee training best practices',
+      author: 'John Doe',
+      authorRole: 'Security Expert',
+      category: 'Cybersecurity',
+      tags: ['security', 'beginners', 'business'],
+      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800',
+      readTime: 5,
+      featured: true,
+      status: 'published',
+      views: 100,
+      createdAt: '2024-01-15T10:30:00Z',
+      updatedAt: '2024-01-16T11:20:00Z',
+      publishedAt: '2024-01-15T10:30:00Z'
+    },
+    {
+      id: 2,
+      title: 'Cloud Migration Best Practices',
+      slug: 'cloud-migration-best-practices',
+      excerpt: 'How to successfully migrate to the cloud without downtime or data loss.',
+      content: 'Migrating to the cloud can transform your business, but poor planning leads to costly mistakes. This guide outlines proven strategies for seamless cloud migration including assessment, planning, execution, and optimization phases.',
+      author: 'Jane Smith',
+      authorRole: 'Cloud Architect',
+      category: 'Data Center',
+      tags: ['cloud', 'migration', 'aws', 'azure'],
+      image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800',
+      readTime: 8,
+      featured: false,
+      status: 'published',
+      views: 50,
+      createdAt: '2024-01-10T14:20:00Z',
+      updatedAt: '2024-01-10T14:20:00Z',
+      publishedAt: '2024-01-10T14:20:00Z'
+    }
+  ];
+}
+
 
   private getMockCaseStudies(): CaseStudy[] {
     console.log('📚 Returning mock case studies data');
