@@ -28,7 +28,7 @@ const Navbar = () => {
     {
       title: "DEVELOPMENT & AI",
       items: [
-        { name: "App & Mobile Development", href: "/services/app-development" },
+        { name: "Development", href: "/services/app-development" },
         { name: "AI & ML", href: "/services/ai-ml" },
       ],
     },
