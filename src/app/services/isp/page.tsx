@@ -1,4 +1,8 @@
+"use client";
+import { useRouter } from "next/navigation";
+
 export default function ISPServicesPage() {
+  const router = useRouter();
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Hero Section */}
@@ -49,10 +53,17 @@ export default function ISPServicesPage() {
 
           {/* CTAs */}
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <button className="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold transition">
+            <button
+              onClick={() => router.push("/contact")}
+              className="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold transition"
+            >
               Request a Quote
             </button>
-            <button className="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold transition">
+
+            <button
+              onClick={() => router.push("/contact")}
+              className="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold transition"
+            >
               Talk to an Expert
             </button>
           </div>
@@ -126,7 +137,9 @@ export default function ISPServicesPage() {
         <section className="mt-10 relative overflow-hidden rounded-3xl">
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('/hero_background/isp_dark_bg.png')" }}
+            style={{
+              backgroundImage: "url('/hero_background/isp_dark_bg.png')",
+            }}
           />
           <div className="absolute inset-0 bg-slate-950/70" />
 
@@ -144,7 +157,6 @@ export default function ISPServicesPage() {
                 uptime.
               </p>
             </div>
-
             <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 items-center text-center">
               {[
                 {
@@ -207,7 +219,10 @@ export default function ISPServicesPage() {
             </div>
 
             <div className="mt-10 flex justify-center">
-              <button className="px-7 py-3 rounded-full border border-white/25 text-white font-semibold hover:bg-white/10 transition">
+              <button
+                onClick={() => router.push("/contact")}
+                className="px-7 py-3 rounded-full border border-white/25 text-white font-semibold hover:bg-white/10 transition"
+              >
                 Request a Quote
               </button>
             </div>
@@ -231,22 +246,34 @@ export default function ISPServicesPage() {
                 title: "Fiber Optic",
                 sub: "Up to 10 Gbps",
                 desc: "Dedicated fiber connectivity with symmetrical speeds for performance-driven teams.",
-                points: ["Dedicated bandwidth", "99.9% uptime SLA", "24/7 monitoring"],
-                color: "from-blue-600 to-blue-800",
+                points: [
+                  "Dedicated bandwidth",
+                  "99.9% uptime SLA",
+                  "24/7 monitoring",
+                ],
+                color: "from-blue-400 to-blue-500",
               },
               {
                 title: "Broadband",
                 sub: "Up to 1 Gbps",
                 desc: "Flexible high-speed plans for growing businesses and multiple locations.",
-                points: ["Scalable bandwidth", "Cost-effective plans", "Quick deployment"],
+                points: [
+                  "Scalable bandwidth",
+                  "Cost-effective plans",
+                  "Quick deployment",
+                ],
                 color: "from-cyan-600 to-cyan-800",
               },
               {
                 title: "SD-WAN",
                 sub: "Multi-site",
                 desc: "Smart routing with centralized control for stable connectivity across branches.",
-                points: ["Centralized management", "Automatic failover", "Enhanced security"],
-                color: "from-indigo-600 to-indigo-800",
+                points: [
+                  "Centralized management",
+                  "Automatic failover",
+                  "Enhanced security",
+                ],
+                color: "from-blue-400 to-blue-500",
               },
             ].map((tier) => (
               <div
@@ -257,7 +284,9 @@ export default function ISPServicesPage() {
                   <h4 className="text-2xl font-extrabold">{tier.title}</h4>
                   <p className="text-white/80 text-sm">{tier.sub}</p>
                 </div>
-                <p className="text-white/90 mb-5 leading-relaxed">{tier.desc}</p>
+                <p className="text-white/90 mb-5 leading-relaxed">
+                  {tier.desc}
+                </p>
                 <div className="space-y-2">
                   {tier.points.map((p) => (
                     <div key={p} className="flex items-start gap-2 text-sm">
@@ -306,22 +335,29 @@ export default function ISPServicesPage() {
         </section>
 
         {/* Final CTA */}
-        <section className="mt-12 rounded-3xl bg-gradient-to-r from-blue-700 to-cyan-700 p-8 md:p-10 text-white">
+        <section className="mt-12 rounded-3xl bg-gradient-to-r from-blue-500 to-cyan-700 p-8 md:p-10 text-white">
           <div className="grid lg:grid-cols-2 gap-6 items-center">
             <div>
               <h3 className="text-3xl font-extrabold mb-2">
                 Ready to upgrade your connectivity?
               </h3>
               <p className="text-white/85 leading-relaxed">
-                Speak to our experts and get a tailored ISP solution designed for
-                your business needs.
+                Speak to our experts and get a tailored ISP solution designed
+                for your business needs.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 lg:justify-end">
-              <button className="bg-white text-blue-700 font-semibold py-3 px-8 rounded-xl hover:bg-blue-50 transition">
+              <button
+                onClick={() => router.push("/contact")}
+                className="bg-white text-blue-700 font-semibold py-3 px-8 rounded-xl hover:bg-blue-50 transition"
+              >
                 Request a Quote
               </button>
-              <button className="bg-white/10 border border-white/20 text-white font-semibold py-3 px-8 rounded-xl hover:bg-white/15 transition">
+
+              <button
+                onClick={() => router.push("/contact")}
+                className="bg-white/10 border border-white/20 text-white font-semibold py-3 px-8 rounded-xl hover:bg-white/15 transition"
+              >
                 Talk to an Expert
               </button>
             </div>
