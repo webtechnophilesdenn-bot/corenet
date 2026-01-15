@@ -1,286 +1,678 @@
-export default function LifeSciencesPage() {
+"use client";
+
+import React from "react";
+import Image from "next/image";
+
+export default function HealthcareLifeSciencesPage() {
+  const trustBadges = [
+    "Security first delivery",
+    "High availability design",
+    "Enterprise support",
+    "Compliance ready approach",
+  ];
+
+  const stats = [
+    { k: "24/7", v: "Monitoring and support" },
+    { k: "99.9%", v: "Uptime focused architecture" },
+    { k: "< 15 min", v: "Response for critical alerts" },
+    { k: "Multi site", v: "Clinics, labs, hospitals" },
+  ];
+
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 to-purple-50">
-      {/* Hero Section with Background Image */}
-      <div className="relative h-120 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r z-10"></div>
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1600')",
-          }}
-        ></div>
-        <div className="relative z-20 max-w-6xl mx-auto px-8 h-full flex flex-col justify-center">
-          <h1 className="text-5xl font-bold text-white mb-4">Life Sciences & Healthcare Solutions</h1>
-          <p className="text-xl text-purple-100 max-w-3xl">
-            Revolutionizing patient care and pharmaceutical innovation with AI-powered diagnostics, digital health platforms, and comprehensive IT solutions for healthcare providers and life sciences organizations
-          </p>
+    <main className="bg-[#070A12] text-white">
+      {/* HERO with background image */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/hero_background/healthcare.jpg"
+            alt="Healthcare IT"
+            fill
+            priority
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-[#070A12]/60" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.40),transparent_45%),radial-gradient(circle_at_80%_30%,rgba(99,102,241,0.32),transparent_45%),radial-gradient(circle_at_60%_80%,rgba(16,185,129,0.20),transparent_40%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(7,10,18,0.10),rgba(7,10,18,0.70),rgba(7,10,18,1))]" />
         </div>
+
+        <div className="relative z-10 container mx-auto px-6 sm:px-8 md:px-16 lg:px-24 pt-16 pb-10 md:pt-20 md:pb-14">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/80">
+            <span className="text-white/70">Industries</span>
+            <span className="text-white/40">/</span>
+            <span className="text-white">Healthcare and Life Sciences</span>
+          </div>
+
+          <div className="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            <div className="lg:col-span-7">
+              <h1 className="text-4xl md:text-5xl font-semibold tracking-tight leading-tight">
+                Secure, reliable IT for healthcare teams
+              </h1>
+
+              <p className="mt-4 text-white/80 text-base md:text-lg leading-relaxed max-w-2xl">
+                We modernize infrastructure, strengthen security, and improve
+                performance for hospitals, clinics, labs, and healthtech teams
+                with a delivery model built for uptime and compliance.
+              </p>
+
+              <div className="mt-7 flex flex-col sm:flex-row gap-3">
+                <a
+                  href="/contact"
+                  className="inline-flex items-center justify-center rounded-xl bg-white text-[#070A12] px-5 py-3 text-sm font-semibold hover:bg-white/90 transition"
+                >
+                  Talk to an expert
+                </a>
+                <a
+                  href="/services/cybersecurity"
+                  className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10 transition"
+                >
+                  View cybersecurity services
+                </a>
+              </div>
+
+              <div className="mt-8 flex flex-wrap gap-2">
+                {trustBadges.map((b) => (
+                  <span
+                    key={b}
+                    className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/85"
+                  >
+                    <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-emerald-400/90" />
+                    {b}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="lg:col-span-5">
+              <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-5 md:p-6">
+                <div className="text-xs font-semibold text-white/70">
+                  At a glance
+                </div>
+                <div className="mt-4 grid grid-cols-2 gap-3">
+                  {stats.map((s) => (
+                    <div
+                      key={s.k}
+                      className="rounded-xl border border-white/10 bg-white/5 p-4"
+                    >
+                      <div className="text-2xl font-semibold">{s.k}</div>
+                      <div className="mt-1 text-xs text-white/75">{s.v}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-5 rounded-xl border border-white/10 bg-[#0B1022] p-4">
+                  <div className="text-xs font-semibold text-white/75">
+                    Built for clinical environments
+                  </div>
+                  <div className="mt-2 text-xs text-white/70 leading-relaxed">
+                    Access control, audit visibility, encryption, backup
+                    discipline, and resilient networking that supports care
+                    delivery without friction.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-10 h-px w-full bg-white/10" />
+        </div>
+      </section>
+
+      {/* BODY */}
+      <div className="bg-white text-slate-900">
+        {/* SECTION: Sectors we serve */}
+        <section className="container mx-auto px-4 pt-14">
+          <div className="container mx-auto px-6 sm:px-8 md:px-16 lg:px-24">
+            <div className="max-w-3xl">
+              <div className="text-xs font-semibold text-blue-700">
+                Sectors we serve
+              </div>
+              <h2 className="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">
+                Healthcare and Life Sciences, end to end
+              </h2>
+              <p className="mt-3 text-slate-600 leading-relaxed">
+                From digital health to clinical workflows, we help healthcare
+                teams improve reliability, security, and patient experience with
+                enterprise grade delivery.
+              </p>
+            </div>
+
+            <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+              {[
+                { t: "Digital Health", i: <IconPlus /> },
+                { t: "Connected Care", i: <IconNetwork /> },
+                { t: "Clinical Workflows", i: <IconWorkflow /> },
+                { t: "Digital Therapeutics", i: <IconPulse /> },
+                { t: "Interoperability", i: <IconLink /> },
+                { t: "Managed Services", i: <IconShield /> },
+              ].map((x) => (
+                <div
+                  key={x.t}
+                  className="rounded-2xl border border-slate-200 bg-white px-4 py-4 flex items-center gap-3 hover:bg-slate-50 transition"
+                >
+                  <div className="h-10 w-10 rounded-xl bg-slate-900 text-white flex items-center justify-center">
+                    {x.i}
+                  </div>
+                  <div className="text-sm font-semibold text-slate-900 leading-snug">
+                    {x.t}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION: Why us */}
+        <section className="container mx-auto px-4 py-14">
+          <div className="container mx-auto px-6 sm:px-8 md:px-16 lg:px-24">
+            <div className="text-center">
+              <div className="text-xs font-semibold text-blue-700">
+                Why Corenet
+              </div>
+              <h2 className="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">
+                Delivery that feels calm, even in critical environments
+              </h2>
+              <p className="mt-3 text-slate-600 leading-relaxed max-w-2xl mx-auto">
+                Clear planning, predictable rollout, and strong governance so
+                clinical operations keep moving.
+              </p>
+            </div>
+
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-5 gap-4 items-stretch">
+              {[
+                { t: "Delivery Excellence", i: <IconCheck /> },
+                { t: "Customer Centricity", i: <IconUser /> },
+                { t: "Strategic Alliances", i: <IconHandshake /> },
+                { t: "Security and Compliance", i: <IconLock /> },
+                { t: "Global Presence, Local Understanding", i: <IconGlobe /> },
+              ].map((x) => (
+                <div
+                  key={x.t}
+                  className="rounded-3xl border border-slate-200 bg-white p-6 text-center hover:shadow-[0_18px_40px_rgba(15,23,42,0.10)] transition"
+                >
+                  <div className="mx-auto h-12 w-12 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center">
+                    {x.i}
+                  </div>
+                  <div className="mt-3 text-sm font-semibold text-slate-900">
+                    {x.t}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION: Alternating image + text blocks */}
+        <section className="container mx-auto px-4 pb-14">
+          <div className="container mx-auto px-6 sm:px-8 md:px-16 lg:px-24">
+            <div className="space-y-12">
+              {/* Block 1 */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div className="lg:col-span-5">
+                  <div className="text-xs font-semibold text-blue-700">
+                    Digital Health
+                  </div>
+                  <h3 className="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">
+                    Transforming patient care with reliable platforms
+                  </h3>
+                  <p className="mt-3 text-slate-600 leading-relaxed">
+                    Build modern digital experiences while keeping privacy and
+                    availability at the core. From portals to backend services,
+                    we engineer for performance and trust.
+                  </p>
+
+                  <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {[
+                      {
+                        t: "Secure access",
+                        d: "Strong identity, least privilege, audit ready.",
+                      },
+                      {
+                        t: "High availability",
+                        d: "Redundancy and monitoring to reduce downtime.",
+                      },
+                      {
+                        t: "Performance tuning",
+                        d: "Faster apps for clinical and admin staff.",
+                      },
+                      {
+                        t: "Backup discipline",
+                        d: "Recovery plans that actually work.",
+                      },
+                    ].map((x) => (
+                      <div
+                        key={x.t}
+                        className="rounded-2xl border border-slate-200 bg-white p-5"
+                      >
+                        <div className="font-semibold text-slate-900">
+                          {x.t}
+                        </div>
+                        <div className="mt-1 text-sm text-slate-600">{x.d}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-6 flex gap-3">
+                    <a
+                      href="/contact"
+                      className="inline-flex items-center justify-center rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800 transition"
+                    >
+                      Know more
+                    </a>
+                    <a
+                      href="/services/cybersecurity"
+                      className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition"
+                    >
+                      Explore security
+                    </a>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-7">
+                  <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-[0_18px_40px_rgba(15,23,42,0.10)]">
+                    <div className="relative aspect-[16/9]">
+                      <Image
+                        src="/hero_background/digital_health.jpg"
+                        alt="Digital health"
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/30 via-transparent to-transparent" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Block 2 reverse */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div className="lg:col-span-7 lg:order-1 order-2">
+                  <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-[0_18px_40px_rgba(15,23,42,0.10)]">
+                    <div className="relative aspect-[16/9]">
+                      <Image
+                        src="/hero_background/connected-care.jpg"
+                        alt="Connected care"
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/30 via-transparent to-transparent" />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-5 lg:order-2 order-1">
+                  <div className="text-xs font-semibold text-blue-700">
+                    Connected Care
+                  </div>
+                  <h3 className="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">
+                    Enhancing care coordination across teams and locations
+                  </h3>
+                  <p className="mt-3 text-slate-600 leading-relaxed">
+                    Secure networking and integrations so clinicians, labs, and
+                    admin systems stay aligned. We focus on clarity, stability,
+                    and safe data flow.
+                  </p>
+
+                  <div className="mt-6 space-y-3">
+                    {[
+                      {
+                        t: "Secure remote access",
+                        d: "Role based access with strong controls.",
+                      },
+                      {
+                        t: "Multi site connectivity",
+                        d: "SD WAN and resilient branch networks.",
+                      },
+                      {
+                        t: "Integration friendly",
+                        d: "Clean interfaces for data exchange.",
+                      },
+                    ].map((x) => (
+                      <div
+                        key={x.t}
+                        className="rounded-2xl border border-slate-200 bg-white p-5"
+                      >
+                        <div className="font-semibold">{x.t}</div>
+                        <div className="mt-1 text-sm text-slate-600">{x.d}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-6">
+                    <a
+                      href="/services/network-solutions"
+                      className="inline-flex items-center justify-center rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800 transition"
+                    >
+                      Know more
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Block 3 */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div className="lg:col-span-5">
+                  <div className="text-xs font-semibold text-blue-700">
+                    Clinical Workflows
+                  </div>
+                  <h3 className="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">
+                    Boosting patient access with stable systems
+                  </h3>
+                  <p className="mt-3 text-slate-600 leading-relaxed">
+                    Reduce friction in appointment, billing, and clinical
+                    operations with strong uptime, monitoring, and modernized
+                    infrastructure.
+                  </p>
+
+                  <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {[
+                      {
+                        t: "Monitoring",
+                        d: "Actionable alerts, not noisy dashboards.",
+                      },
+                      {
+                        t: "Patch management",
+                        d: "Controlled, predictable updates.",
+                      },
+                      {
+                        t: "Incident response",
+                        d: "Fast triage with clear escalation.",
+                      },
+                      {
+                        t: "Service desk",
+                        d: "Support teams that understand priorities.",
+                      },
+                    ].map((x) => (
+                      <div
+                        key={x.t}
+                        className="rounded-2xl border border-slate-200 bg-white p-5"
+                      >
+                        <div className="font-semibold">{x.t}</div>
+                        <div className="mt-1 text-sm text-slate-600">{x.d}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-6">
+                    <a
+                      href="/services/managed-it"
+                      className="inline-flex items-center justify-center rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800 transition"
+                    >
+                      Know more
+                    </a>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-7">
+                  <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-[0_18px_40px_rgba(15,23,42,0.10)]">
+                    <div className="relative aspect-[16/9]">
+                      <Image
+                        src="/hero_background/clinical-workflows.jpg"
+                        alt="Clinical workflows"
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/30 via-transparent to-transparent" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION: Video */}
+        <section className="border-t border-slate-100 bg-[#FAFBFF]">
+          <div className="container mx-auto px-6 sm:px-8 md:px-16 lg:px-24">
+            <div className="container mx-auto px-4 py-14">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div className="lg:col-span-5">
+                  <div className="text-xs font-semibold text-blue-700">
+                    Quick overview
+                  </div>
+                  <h2 className="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">
+                    A simple view of our delivery model
+                  </h2>
+                  <p className="mt-3 text-slate-600 leading-relaxed">
+                    Clear phases, controlled rollout, and ongoing support
+                    aligned to healthcare operations.
+                  </p>
+
+                  <div className="mt-5 flex gap-3">
+                    <a
+                      href="/contact"
+                      className="inline-flex items-center justify-center rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800 transition"
+                    >
+                      Book a call
+                    </a>
+                    <a
+                      href="/services"
+                      className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition"
+                    >
+                      View services
+                    </a>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-7">
+  <div className="rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-[0_18px_40px_rgba(15,23,42,0.10)]">
+    <div className="relative aspect-video bg-black">
+      <video
+  className="w-full h-full object-cover"
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="auto"
+  poster="/hero_background/healthcare.jpg"
+>
+  <source src="/hero_background/clinical-workflows.mp4" type="video/mp4" />
+</video>
+    </div>
+    <div className="p-5">
+      <div className="text-sm font-semibold">Healthcare IT overview</div>
+      <div className="mt-1 text-sm text-slate-600">
+        Uptime, security, and support designed for critical systems.
       </div>
+    </div>
+  </div>
+</div>
 
-      {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-8 py-12">
-        
-        {/* Introduction */}
-        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">
-            Advancing Healthcare Through Technology
-          </h2>
-          <p className="text-lg text-gray-700 leading-relaxed mb-4">
-            CoreNet's Life Sciences and Healthcare solutions empower organizations to deliver better patient outcomes, accelerate drug development, and optimize clinical operations [web:6]. We leverage AI/ML, data analytics, and cloud platforms like Workday, Salesforce, Veeva, and Azure to transform healthcare delivery and pharmaceutical research.
-          </p>
-          <p className="text-lg text-gray-700 leading-relaxed">
-            From FDA-approved digital medicine systems to cloud-hosted EHR platforms, our experts design solutions that enhance patient engagement, ensure regulatory compliance, and drive innovation across the healthcare ecosystem [web:6].
-          </p>
-        </div>
-
-        {/* Healthcare Pillars */}
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-            Core Healthcare Capabilities
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            
-            <div className="bg-gradient-to-br from-purple-600 to-purple-800 rounded-lg shadow-xl p-8 text-white">
-              <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mr-4">
-                  <svg className="w-10 h-10 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold">AI/ML Innovation</h3>
-                  <p className="text-purple-100">Intelligent Healthcare</p>
-                </div>
-              </div>
-              <p className="text-purple-50 mb-4">
-                AI-assisted diagnostics, predictive analytics, and GenAI solutions for administrative automation [web:6].
-              </p>
-              <div className="space-y-2">
-                <div className="flex items-start">
-                  <span className="text-yellow-300 mr-2">✓</span>
-                  <span className="text-purple-50">Clinical decision support</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-yellow-300 mr-2">✓</span>
-                  <span className="text-purple-50">Medical imaging AI</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-yellow-300 mr-2">✓</span>
-                  <span className="text-purple-50">Claims processing</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gradient-to-br from-pink-600 to-pink-800 rounded-lg shadow-xl p-8 text-white">
-              <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mr-4">
-                  <svg className="w-10 h-10 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold">Cloud EHR</h3>
-                  <p className="text-pink-100">Digital Health Records</p>
-                </div>
-              </div>
-              <p className="text-pink-50 mb-4">
-                Cloud-hosted electronic health records with real-time access, seamless integration, and HIPAA compliance [web:6].
-              </p>
-              <div className="space-y-2">
-                <div className="flex items-start">
-                  <span className="text-yellow-300 mr-2">✓</span>
-                  <span className="text-pink-50">Data centralization</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-yellow-300 mr-2">✓</span>
-                  <span className="text-pink-50">Interoperability</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-yellow-300 mr-2">✓</span>
-                  <span className="text-pink-50">Mobile accessibility</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-lg shadow-xl p-8 text-white">
-              <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mr-4">
-                  <svg className="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold">Drug Development</h3>
-                  <p className="text-indigo-100">Clinical Research</p>
-                </div>
-              </div>
-              <p className="text-indigo-50 mb-4">
-                Accelerated clinical trials, research data management, and regulatory compliance solutions [web:6].
-              </p>
-              <div className="space-y-2">
-                <div className="flex items-start">
-                  <span className="text-yellow-300 mr-2">✓</span>
-                  <span className="text-indigo-50">Trial management</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-yellow-300 mr-2">✓</span>
-                  <span className="text-indigo-50">Data analytics</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-yellow-300 mr-2">✓</span>
-                  <span className="text-indigo-50">Quality assurance</span>
-                </div>
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Services Grid */}
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-            Comprehensive Healthcare Services
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            
-            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Digital Medicine Systems</h3>
-              <p className="text-gray-600">
-                FDA-approved solutions for real-time patient insights and enhanced medication adherence [web:6].
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Telemedicine Platforms</h3>
-              <p className="text-gray-600">
-                Virtual care solutions with video consultation, remote monitoring, and patient engagement tools.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Healthcare Analytics</h3>
-              <p className="text-gray-600">
-                Population health management, predictive analytics, and self-service BI for data-driven decisions [web:6].
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">HIPAA Compliance</h3>
-              <p className="text-gray-600">
-                Security frameworks with encryption, access controls, and audit logs for regulatory compliance [web:6].
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Pharma CRM</h3>
-              <p className="text-gray-600">
-                Veeva and Salesforce implementation for pharmaceutical sales, marketing, and compliance management.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Data Modernization</h3>
-              <p className="text-gray-600">
-                Databricks migration, data lakes, and advanced analytics for clinical research organizations [web:6].
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Healthcare Process */}
-        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-            Digital Health Transformation Journey
-          </h2>
-          <div className="grid md:grid-cols-4 gap-6">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
-              <h4 className="font-bold text-lg mb-2">Discovery</h4>
-              <p className="text-gray-600 text-sm">Assess healthcare IT landscape and patient care workflows</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
-              <h4 className="font-bold text-lg mb-2">Design</h4>
-              <p className="text-gray-600 text-sm">Create patient-centric digital solutions aligned with clinical goals</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
-              <h4 className="font-bold text-lg mb-2">Deploy</h4>
-              <p className="text-gray-600 text-sm">Implement EHR, AI tools, and cloud platforms with minimal disruption</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">4</div>
-              <h4 className="font-bold text-lg mb-2">Deliver Value</h4>
-              <p className="text-gray-600 text-sm">Measure outcomes and continuously enhance patient experiences</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Why Choose Section */}
-        <div className="bg-gradient-to-r from-purple-600 to-pink-700 rounded-lg shadow-xl p-8 text-white mb-8">
-          <h2 className="text-3xl font-bold mb-6 text-center">Healthcare Transformation Benefits</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="text-center">
-              <div className="text-4xl mb-2">❤️</div>
-              <h4 className="font-bold text-xl mb-2">Better Outcomes</h4>
-              <p className="text-purple-100">Enhanced patient care through AI-powered diagnostics and personalized treatment [web:6]</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl mb-2">⚡</div>
-              <h4 className="font-bold text-xl mb-2">Faster Innovation</h4>
-              <p className="text-purple-100">Accelerate drug development and clinical trials with advanced analytics</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl mb-2">💰</div>
-              <h4 className="font-bold text-xl mb-2">Cost Efficiency</h4>
-              <p className="text-purple-100">Reduce administrative burden through GenAI automation and streamlined workflows [web:6]</p>
-            </div>
-          </div>
-        </div>
-
-        {/* CTA */}
-        <div className="bg-white rounded-lg shadow-lg p-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">
-            Ready to Transform Patient Care?
-          </h2>
-          <p className="text-lg text-gray-600 mb-6">
-            Leverage AI, cloud, and digital health solutions to improve outcomes and efficiency.
-          </p>
-          <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg transition-colors">
-            Start Healthcare Journey
-          </button>
-        </div>
+        </section>
       </div>
     </main>
+  );
+}
+
+/* =========================
+   Icons (component ke bahar)
+========================= */
+
+function IconPlus() {
+  return (
+    <svg
+      className="w-5 h-5"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="M12 6v12m6-6H6"
+      />
+    </svg>
+  );
+}
+function IconNetwork() {
+  return (
+    <svg
+      className="w-5 h-5"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="M12 3v6m0 6v6M4.5 7.5l7.5 3 7.5-3M4.5 16.5l7.5-3 7.5 3"
+      />
+    </svg>
+  );
+}
+function IconWorkflow() {
+  return (
+    <svg
+      className="w-5 h-5"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="M7 7h10M7 12h6M7 17h10"
+      />
+    </svg>
+  );
+}
+function IconPulse() {
+  return (
+    <svg
+      className="w-5 h-5"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="M4 12h3l2-4 4 8 2-4h5"
+      />
+    </svg>
+  );
+}
+function IconLink() {
+  return (
+    <svg
+      className="w-5 h-5"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="M10 13a5 5 0 007.07 0l1.41-1.41a5 5 0 000-7.07 5 5 0 00-7.07 0L10 5m4 6a5 5 0 01-7.07 0L5.52 9.59a5 5 0 010-7.07 5 5 0 017.07 0L14 4"
+      />
+    </svg>
+  );
+}
+function IconShield() {
+  return (
+    <svg
+      className="w-5 h-5"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="M12 3l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V7l8-4z"
+      />
+    </svg>
+  );
+}
+function IconCheck() {
+  return (
+    <svg
+      className="w-5 h-5"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="M5 13l4 4L19 7"
+      />
+    </svg>
+  );
+}
+function IconUser() {
+  return (
+    <svg
+      className="w-5 h-5"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="M12 12a4 4 0 100-8 4 4 0 000 8zm7 8a7 7 0 00-14 0"
+      />
+    </svg>
+  );
+}
+function IconHandshake() {
+  return (
+    <svg
+      className="w-5 h-5"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="M8 12l2 2 4-4 2 2 3-3"
+      />
+    </svg>
+  );
+}
+function IconLock() {
+  return (
+    <svg
+      className="w-5 h-5"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+      />
+    </svg>
+  );
+}
+function IconGlobe() {
+  return (
+    <svg
+      className="w-5 h-5"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9c2.5-2.5 4-5.5 4-9s-1.5-6.5-4-9m0 18c-2.5-2.5-4-5.5-4-9s1.5-6.5 4-9"
+      />
+    </svg>
   );
 }
