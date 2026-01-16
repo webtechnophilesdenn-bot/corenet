@@ -38,7 +38,7 @@ const Navbar = () => {
     {
       title: "SECURITY & CONSULTING",
       items: [
-        { name: "Cybersecurity", href: "/services/cybersecurity" },
+        { name: "Cyber Security", href: "/services/cybersecurity" },
         { name: "IT Consulting", href: "/services/it-consulting" },
       ],
     },
@@ -46,7 +46,7 @@ const Navbar = () => {
       title: "OPERATIONS & DATA",
       items: [
         { name: "DevOps", href: "/services/devops" },
-        { name: "Data Analytics Basic", href: "/services/data-analytics" },
+        { name: "Data Analytics", href: "/services/data-analytics" },
         { name: "Managed IT", href: "/services/managed-it" },
       ],
     },

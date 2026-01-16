@@ -11,7 +11,7 @@ export default function AIMLPage() {
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-no-repeat bg-cover bg-center scale-[1.03]"
-          style={{ backgroundImage: "url('/hero_background/ai_ml_hero.jpg')" }}
+          style={{ backgroundImage: "url('/hero_background/ai_ml_hero.jpeg')" }}
         />
 
         {/* Overlays */}
@@ -33,8 +33,7 @@ export default function AIMLPage() {
               </div>
 
               <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-[1.05] mb-4">
-                AI & ML{" "}
-                <span className="text-fuchsia-200">Solutions</span>
+                AI & ML <span className="text-fuchsia-200">Solutions</span>
               </h1>
 
               <p className="text-base md:text-lg text-slate-200 max-w-2xl leading-relaxed">
@@ -191,7 +190,7 @@ export default function AIMLPage() {
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="rounded-3xl overflow-hidden border border-gray-100">
               <img
-                src="/hero_background/ai_ml_about.jpg"
+                src="/hero_background/ai_ml_about.jpeg"
                 alt="About AI & ML"
                 className="w-full h-[320px] object-cover"
               />
@@ -338,21 +337,33 @@ export default function AIMLPage() {
                 title: "Proof of Concept",
                 sub: "2 to 4 weeks",
                 desc: "Validate an AI use case quickly with clear outputs and success metrics.",
-                points: ["Fast delivery", "Clear KPI targets", "Go no go decision"],
+                points: [
+                  "Fast delivery",
+                  "Clear KPI targets",
+                  "Go no go decision",
+                ],
                 color: "from-fuchsia-500 to-violet-600",
               },
               {
                 title: "Production AI",
                 sub: "End to end build",
                 desc: "Data pipelines, model training, deployment, monitoring, and iteration.",
-                points: ["MLOps ready", "Version control", "Monitoring dashboards"],
+                points: [
+                  "MLOps ready",
+                  "Version control",
+                  "Monitoring dashboards",
+                ],
                 color: "from-violet-600 to-indigo-700",
               },
               {
                 title: "AI Automation",
                 sub: "Workflow focused",
                 desc: "Automate repetitive tasks using NLP, vision, and smart routing logic.",
-                points: ["Reduce manual work", "Faster turnaround", "Higher accuracy"],
+                points: [
+                  "Reduce manual work",
+                  "Faster turnaround",
+                  "Higher accuracy",
+                ],
                 color: "from-fuchsia-500 to-violet-600",
               },
             ].map((tier) => (
