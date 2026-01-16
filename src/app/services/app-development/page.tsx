@@ -1,286 +1,510 @@
-export default function AppDevelopmentPage() {
+"use client";
+
+import {
+  FiCode,
+  FiSmartphone,
+  FiGlobe,
+  FiServer,
+  FiDatabase,
+  FiCloud,
+  FiShield,
+  FiCpu,
+  FiGitBranch,
+  FiSettings,
+  FiLayers,
+  FiBarChart2,
+} from "react-icons/fi";
+
+export default function DevelopmentPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 to-purple-50">
-      {/* Hero Section with Background Image */}
-      <div className="relative h-120 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r  z-10"></div>
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('https://ezranking.s3.eu-west-2.amazonaws.com/blog/wp-content/uploads/2022/01/07063220/mobile-app-development-trends.png')`,}}
-        ></div>
-        <div className="relative z-20 max-w-6xl mx-auto px-8 h-full flex flex-col justify-center">
-          <h1 className="text-5xl font-bold text-white mb-4">Mobile & App Development Services</h1>
-          <p className="text-xl text-purple-100 max-w-3xl">
-            Transform your ideas into powerful mobile experiences with custom iOS and Android applications designed for today's connected world and tomorrow's innovations
-          </p>
+    <main className="min-h-screen bg-gradient-to-br from-slate-50 to-emerald-50">
+      {/* Hero Section */}
+      <div className="relative bg-slate-950">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <div className="grid md:grid-cols-2 items-center h-[520px] gap-8">
+            {/* LEFT: Image */}
+            <div className="relative h-full flex items-center justify-center">
+              <img
+                src="/hero_background/development.png"
+                alt="Development"
+                className="w-full max-w-md object-contain"
+              />
+            </div>
+
+            {/* RIGHT: Content */}
+            <div className="text-white">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-semibold tracking-wider">
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                DEVELOPMENT SERVICES
+              </div>
+
+              <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-4">
+                Full Stack Development Solutions
+              </h1>
+
+              <p className="text-slate-200 max-w-xl leading-relaxed">
+                We build modern web apps, mobile apps, APIs, dashboards, and
+                cloud-ready systems with clean code, strong security, and
+                scalable architecture.
+              </p>
+
+              {/* Highlights */}
+              <div className="mt-6 flex flex-wrap gap-3">
+                {[
+                  "Web + Mobile Apps",
+                  "API & Backend Systems",
+                  "Cloud Ready Architecture",
+                  "Secure & Scalable",
+                ].map((t) => (
+                  <div
+                    key={t}
+                    className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-sm"
+                  >
+                    {t}
+                  </div>
+                ))}
+              </div>
+
+              {/* CTAs */}
+              <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                <a
+                  href="/contact-us"
+                  className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 font-semibold transition"
+                >
+                  Request a Quote
+                </a>
+
+                <a
+                  href="/contact-us"
+                  className="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 font-semibold transition"
+                >
+                  Talk to an Expert
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-8 py-12">
-        
-        {/* Introduction */}
-        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">
-            Bringing Your Vision to Life
-          </h2>
-          <p className="text-lg text-gray-700 leading-relaxed mb-4">
-            At CoreNet, we specialize in creating engaging mobile applications that complement or substitute web solutions. Our expert team designs and develops custom mobile apps tailored to your specific requirements and business goals, ensuring compatibility across various devices and platforms.
+      <div className="max-w-6xl mx-auto px-2 sm:px-3 md:px-4 py-10">
+        {/* Section 1: Clean intro */}
+        <section className="pb-10">
+          <div className="max-w-6xl">
+            <div className="text-xs font-semibold tracking-wider text-emerald-700 uppercase mb-2">
+              Development services
+            </div>
+
+            <h2 className="text-4xl font-extrabold text-gray-900 leading-tight mb-4">
+              Build products that are fast, reliable, and easy to scale
+            </h2>
+
+            <p className="text-gray-700 leading-relaxed mb-4">
+              From idea to launch, we help businesses build software that users
+              love. Whether it is a website, an internal system, an e-commerce
+              platform, or a custom app, we deliver clean architecture and
+              performance that holds up under real usage.
+            </p>
+
+            <p className="text-gray-700 leading-relaxed">
+              You get structured development, clear milestones, documented
+              handover, and long-term support to keep everything running
+              smoothly.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 2: Process + illustration split */}
+        <section className="mt-6 grid lg:grid-cols-2 gap-10 items-start">
+          <div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-3">
+              End to end delivery
+            </h3>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              We handle planning, UI, development, testing, deployment, and
+              maintenance. You stay in control with clear updates, clean
+              timelines, and measurable progress.
+            </p>
+
+            <div className="space-y-3 mt-6">
+              {[
+                "Requirement gathering and scope lock",
+                "UI and UX design aligned to your brand",
+                "Frontend and backend development",
+                "API integrations and payment gateways",
+                "Testing, optimization, and security checks",
+                "Deployment and post launch support",
+                "Version control and release management",
+              ].map((t, i) => (
+                <div key={`${i}-${t}`} className="flex items-start gap-3">
+                  <span className="mt-1.5 w-2 h-2 rounded-full bg-emerald-600" />
+                  <p className="text-gray-700 leading-relaxed">{t}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-3xl bg-white border border-gray-100 shadow-sm overflow-hidden">
+            <div className="p-6 md:p-8">
+              <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-slate-50 to-emerald-50 border border-gray-100">
+                <img
+                  src="/hero_background/development_illustration.jpg"
+                  alt="Development illustration"
+                  className="w-full h-[220px] md:h-[360px] object-fit"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 3: Launch with confidence */}
+        <section className="mt-12 rounded-3xl bg-white border border-gray-100 shadow-sm overflow-hidden">
+          <div className="grid lg:grid-cols-2 gap-8 items-center p-6 md:p-10">
+            <div className="relative">
+              <div className="absolute -inset-10 bg-emerald-100/60 blur-2xl rounded-full" />
+
+              <div className="relative rounded-3xl bg-gradient-to-br from-slate-50 to-white border border-gray-100 overflow-hidden">
+                <video
+                  src="/hero_background/dev_launch.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-[520px] object-cover"
+                />
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">
+                Launch with confidence
+              </h3>
+              <p className="text-lg font-semibold text-emerald-700 mb-4">
+                We build. We test. We ship. We support.
+              </p>
+
+              <p className="text-gray-700 leading-relaxed mb-6">
+                Whether it is a fresh product or a rebuild, our team follows a
+                clean delivery process with code reviews, testing, deployment
+                pipelines, and monitoring so you can go live without stress.
+              </p>
+
+              <div className="space-y-3">
+                {[
+                  "Sprint based delivery and tracking",
+                  "Staging environment before production",
+                  "CI CD pipeline setup",
+                  "Performance and security validation",
+                  "Monitoring and ongoing improvements",
+                ].map((t) => (
+                  <div key={t} className="flex items-start gap-3">
+                    <span className="mt-1 text-emerald-700 font-bold">✓</span>
+                    <p className="text-gray-700">{t}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                <a
+                  href="/contact"
+                  className="inline-flex justify-center px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold transition"
+                >
+                  Start a Project
+                </a>
+                <a
+                  href="/contact"
+                  className="inline-flex justify-center px-6 py-3 rounded-xl border border-emerald-200 text-emerald-700 font-semibold hover:bg-emerald-50 transition"
+                >
+                  Talk to an Expert
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 4: Benefits strip (same layout style) */}
+        <section className="mt-12 w-full overflow-hidden">
+          <div
+            className="relative w-full"
+            style={{
+              backgroundImage: "url('/hero_background/blue-network-bg.jpg')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            <div className="absolute inset-0 bg-slate-950/55" />
+
+            <div className="relative z-10 px-6 sm:px-5 md:px-7 py-12">
+              <div className="text-center max-w-5xl mx-auto">
+                <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+                  <span className="text-orange-400">Development</span> that
+                  helps
+                  <br className="hidden md:block" />
+                  your business move faster
+                </h2>
+                <div className="w-16 h-1 bg-orange-400 mx-auto mt-6 rounded-full" />
+              </div>
+
+              <div className="mt-14 max-w-6xl mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
+                  {[
+                    { title: "Faster Launch", icon: "🚀" },
+                    { title: "Better UX", icon: "✨" },
+                    { title: "Scalable Code", icon: "📈" },
+                    { title: "Easy Maintainance", icon: "⚙️" },
+                    { title: "Secure Systems", icon: "🛡️" },
+                  ].map((item, idx) => (
+                    <div
+                      key={item.title}
+                      className={`relative px-10 py-10 text-center ${
+                        idx !== 0 ? "lg:border-l lg:border-white/15" : ""
+                      }`}
+                    >
+                      {idx !== 0 && (
+                        <span className="absolute left-0 top-1/2 hidden lg:block h-24 -translate-y-1/2 border-l border-dashed border-white/25" />
+                      )}
+
+                      <div className="text-3xl mb-4 text-white/90">
+                        {item.icon}
+                      </div>
+                      <div className="text-xl font-extrabold text-white leading-snug">
+                        {item.title}
+                      </div>
+
+                      <span className="absolute left-10 right-10 bottom-0 hidden lg:block border-b border-dashed border-white/25" />
+                    </div>
+                  ))}
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
+                  {[
+                    { title: "Automation", icon: "🤖" },
+                    { title: "Analytics Ready", icon: "📊" },
+                    { title: "API Integration", icon: "🔌" },
+                    { title: "Cloud Deploy", icon: "☁️" },
+                    { title: "Support", icon: "🧰" },
+                  ].map((item, idx) => (
+                    <div
+                      key={item.title}
+                      className={`relative px-5 py-5 text-center ${
+                        idx !== 0 ? "lg:border-l lg:border-white/15" : ""
+                      }`}
+                    >
+                      {idx !== 0 && (
+                        <span className="absolute left-0 top-1/2 hidden lg:block h-24 -translate-y-1/2 border-l border-dashed border-white/25" />
+                      )}
+
+                      <div className="text-3xl mb-4 text-white/90">
+                        {item.icon}
+                      </div>
+                      <div className="text-xl font-extrabold text-white leading-snug">
+                        {item.title}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 5: Why work with us */}
+        <section className="mt-12">
+          <div className="text-center">
+            <h3 className="text-4xl font-extrabold text-gray-900">
+              Why work with us
+            </h3>
+            <div className="w-16 h-1 bg-orange-400 mx-auto mt-4 mb-6 rounded-full" />
+            <p className="text-gray-700 leading-relaxed max-w-4xl mx-auto">
+              We build production ready software with clean code, secure
+              practices, and a long-term mindset. You get a team that thinks
+              beyond launch, focusing on performance, security, and scale.
+            </p>
+          </div>
+
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6 items-center">
+            {[
+              { name: "Agile Delivery", img: "/hero_background/agile.png" },
+              {
+                name: "Secure by Design",
+                img: "/hero_background/security.png",
+              },
+              { name: "Cloud Ready", img: "/hero_background/cloud.png" },
+            ].map((p) => (
+              <div key={p.name} className="flex justify-center">
+                <img
+                  src={p.img}
+                  alt={p.name}
+                  className="h-20 md:h-44 object-contain transition-transform duration-300 hover:scale-110"
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 6: Complete 360 solutions (development types) */}
+        <section className="mt-26">
+          <div className="text-center mb-12">
+            <h3 className="text-4xl md:text-4xl font-extrabold text-gray-900">
+              Complete 360° development
+            </h3>
+            <div className="w-14 h-1 bg-orange-500 mx-auto mt-4 rounded-full" />
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+            {[
+              {
+                icon: FiGlobe,
+                title: "Web Development",
+                desc: "Modern websites and web apps with fast performance and clean UI.",
+              },
+              {
+                icon: FiSmartphone,
+                title: "Mobile App Development",
+                desc: "Android and iOS apps with scalable backend and smooth UX.",
+              },
+              {
+                icon: FiServer,
+                title: "Backend Development",
+                desc: "APIs, microservices, authentication, and scalable server architecture.",
+              },
+              {
+                icon: FiDatabase,
+                title: "Database Design",
+                desc: "Schema planning, optimization, backups, and performance tuning.",
+              },
+              {
+                icon: FiCloud,
+                title: "Cloud Development",
+                desc: "Cloud ready apps with deployment, scaling, and environment setup.",
+              },
+              {
+                icon: FiShield,
+                title: "Security Hardening",
+                desc: "Secure coding, access control, and best practices for production safety.",
+              },
+              {
+                icon: FiCpu,
+                title: "Automation & DevOps",
+                desc: "CI CD, pipelines, infrastructure as code, and reliable deployments.",
+              },
+              {
+                icon: FiGitBranch,
+                title: "System Integrations",
+                desc: "Payment gateways, CRMs, ERPs, WhatsApp, email, and third party APIs.",
+              },
+              {
+                icon: FiLayers,
+                title: "UI/UX & Product Design",
+                desc: "Product thinking, wireframes, design systems, and conversion friendly UI.",
+              },
+              {
+                icon: FiSettings,
+                title: "Maintenance & Support",
+                desc: "Bug fixes, enhancements, upgrades, monitoring, and long-term care.",
+              },
+              {
+                icon: FiBarChart2,
+                title: "Dashboards & Analytics",
+                desc: "Admin panels, reporting dashboards, KPIs, and tracking setup.",
+              },
+              {
+                icon: FiCode,
+                title: "Custom Software",
+                desc: "Tailor made systems built around your workflows and operations.",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="bg-white rounded-2xl p-8 text-center border border-gray-100"
+              >
+                <div className="flex justify-center mb-4">
+                  <item.icon className="text-orange-500 w-10 h-10" />
+                </div>
+
+                <h4 className="text-lg font-bold text-gray-900 mb-2">
+                  {item.title}
+                </h4>
+
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 7: Advantages split */}
+        <section className="mt-14 rounded-3xl bg-gradient-to-br from-slate-50 to-emerald-50 border border-gray-100 overflow-hidden">
+          <div className="grid lg:grid-cols-2 gap-8 items-center p-6 md:p-10">
+            <div>
+              <h3 className="text-3xl font-extrabold text-gray-900 mb-4">
+                Development advantages that you can measure
+              </h3>
+
+              <div className="space-y-3">
+                {[
+                  "Clean codebase and maintainable structure",
+                  "Optimized performance and faster load times",
+                  "Security best practices from day one",
+                  "Scalable architecture for growth",
+                  "Clear documentation and handover",
+                  "Stable deployments and monitoring",
+                  "Long term support and improvements",
+                ].map((t) => (
+                  <div key={t} className="flex items-start gap-3">
+                    <span className="mt-1 text-emerald-700 font-bold">•</span>
+                    <p className="text-gray-700">{t}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                <a
+                  href="/contact"
+                  className="inline-flex justify-center bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-7 py-3 rounded-xl transition"
+                >
+                  Connect with us now
+                </a>
+                <a
+                  href="/contact"
+                  className="inline-flex justify-center border border-emerald-200 text-emerald-700 font-semibold px-7 py-3 rounded-xl hover:bg-white/60 transition"
+                >
+                  Request a Quote
+                </a>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="absolute -inset-10 bg-emerald-200/40 blur-2xl rounded-full" />
+              <div className="relative rounded-3xl bg-white border border-gray-100 shadow-sm overflow-hidden">
+                <img
+                  src="/hero_background/dev_advantages.jpg"
+                  alt="Development advantages"
+                  className="w-full h-[340px] object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Final CTA */}
+        <section className="mt-14 rounded-3xl bg-white border border-gray-100 shadow-sm p-8 md:p-10 text-center">
+          <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">
+            Ready to build something solid?
+          </h3>
+          <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed mb-7">
+            Tell us what you are building. We will recommend the right stack,
+            architecture, and delivery plan to launch fast and scale safely.
           </p>
-          <p className="text-lg text-gray-700 leading-relaxed">
-            From initial concept to app store deployment, we handle the entire development process with precision, focusing on user-centric design, seamless functionality, and long-term success.
-          </p>
-        </div>
-
-        {/* Platform Development */}
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-            Platform Expertise
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            
-            {/* iOS Development */}
-            <div className="bg-gradient-to-br from-gray-900 to-gray-700 rounded-lg shadow-xl p-8 text-white">
-              <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mr-4">
-                  <svg className="w-10 h-10 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold">iOS Development</h3>
-                  <p className="text-gray-300">iPhone & iPad Apps</p>
-                </div>
-              </div>
-              <p className="text-gray-200 mb-4">
-                Native iOS applications optimized for Apple devices, delivering exceptional performance and seamless integration with iOS features.
-              </p>
-              <div className="space-y-2">
-                <div className="flex items-start">
-                  <span className="text-purple-400 mr-2">✓</span>
-                  <span className="text-gray-200">Swift & Objective-C development</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-purple-400 mr-2">✓</span>
-                  <span className="text-gray-200">App Store deployment support</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-purple-400 mr-2">✓</span>
-                  <span className="text-gray-200">iOS-specific feature integration</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Android Development */}
-            <div className="bg-gradient-to-br from-green-600 to-green-800 rounded-lg shadow-xl p-8 text-white">
-              <div className="flex items-center mb-4">
-                <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mr-4">
-                  <svg className="w-10 h-10 text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24a11.5 11.5 0 0 0-8.94 0L5.65 5.67c-.19-.28-.54-.37-.83-.22-.3.16-.42.54-.26.85l1.84 3.18C2.92 10.89 1 13.88 1 17.3h22c0-3.42-1.92-6.41-5.4-7.82M8.06 14.45c-.39 0-.72-.33-.72-.72s.33-.72.72-.72c.39 0 .72.33.72.72s-.33.72-.72.72m7.88 0c-.39 0-.72-.33-.72-.72s.33-.72.72-.72c.39 0 .72.33.72.72s-.33.72-.72.72"/>
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold">Android Development</h3>
-                  <p className="text-green-100">Google Play Apps</p>
-                </div>
-              </div>
-              <p className="text-green-50 mb-4">
-                Robust Android applications that reach the widest mobile audience with optimal performance across diverse device ecosystems.
-              </p>
-              <div className="space-y-2">
-                <div className="flex items-start">
-                  <span className="text-yellow-300 mr-2">✓</span>
-                  <span className="text-green-50">Kotlin & Java development</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-yellow-300 mr-2">✓</span>
-                  <span className="text-green-50">Google Play Store optimization</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-yellow-300 mr-2">✓</span>
-                  <span className="text-green-50">Material Design implementation</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Cross-Platform Development */}
-        <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg shadow-xl p-8 text-white mb-8">
-          <div className="flex items-center mb-4">
-            <div className="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mr-4">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-              </svg>
-            </div>
-            <h2 className="text-3xl font-bold">Cross-Platform Development</h2>
-          </div>
-          <p className="text-lg text-blue-50 mb-4">
-            Build once, deploy everywhere. We utilize advanced frameworks like React Native and Flutter to create mobile apps that run smoothly on both iOS and Android platforms, reducing development time and costs while maintaining native-like performance.
-          </p>
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="bg-white bg-opacity-10 rounded-lg p-4">
-              <h4 className="font-bold text-lg mb-2">Cost-Effective</h4>
-              <p className="text-blue-50">Single codebase for multiple platforms means faster, more affordable development</p>
-            </div>
-            <div className="bg-white bg-opacity-10 rounded-lg p-4">
-              <h4 className="font-bold text-lg mb-2">Faster Time-to-Market</h4>
-              <p className="text-blue-50">Launch on both platforms simultaneously to maximize reach and impact</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Core Services Grid */}
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-            Comprehensive App Development Services
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            
-            {/* User-Centric Design */}
-            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">UI/UX Design</h3>
-              <p className="text-gray-600">
-                Intuitive and visually appealing interfaces with seamless navigation, easy accessibility, and engaging designs that keep users coming back.
-              </p>
-            </div>
-
-            {/* Custom Development */}
-            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Custom Development</h3>
-              <p className="text-gray-600">
-                Tailored mobile applications designed specifically for your business requirements, built with precision using various programming languages and frameworks.
-              </p>
-            </div>
-
-            {/* Backend Integration */}
-            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Backend Integration</h3>
-              <p className="text-gray-600">
-                Seamless integration with backend systems, databases, APIs, and third-party services to enhance functionality and user experience.
-              </p>
-            </div>
-
-            {/* Testing & QA */}
-            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Testing & QA</h3>
-              <p className="text-gray-600">
-                Rigorous testing throughout development to ensure optimal performance, security, and usability across all target devices and platforms.
-              </p>
-            </div>
-
-            {/* App Store Deployment */}
-            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">App Store Deployment</h3>
-              <p className="text-gray-600">
-                Complete support throughout the submission and approval process for both Apple App Store and Google Play Store to ensure successful launch.
-              </p>
-            </div>
-
-            {/* Ongoing Support */}
-            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Maintenance & Updates</h3>
-              <p className="text-gray-600">
-                Regular updates, bug fixes, feature enhancements, and performance optimizations to keep your app running smoothly and up to date.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Development Process */}
-        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-            Our Development Process
-          </h2>
-          <div className="grid md:grid-cols-4 gap-6">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
-              <h4 className="font-bold text-lg mb-2">Discovery & Planning</h4>
-              <p className="text-gray-600 text-sm">Define functionality, target audience, and UX requirements</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
-              <h4 className="font-bold text-lg mb-2">Design & Prototype</h4>
-              <p className="text-gray-600 text-sm">Create interactive prototypes for testing and feedback</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
-              <h4 className="font-bold text-lg mb-2">Agile Development</h4>
-              <p className="text-gray-600 text-sm">Build with continuous feedback and iteration</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">4</div>
-              <h4 className="font-bold text-lg mb-2">Launch & Support</h4>
-              <p className="text-gray-600 text-sm">Deploy to stores and provide ongoing maintenance</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Why Choose Section */}
-        <div className="bg-gradient-to-r from-purple-600 to-indigo-700 rounded-lg shadow-xl p-8 text-white mb-8">
-          <h2 className="text-3xl font-bold mb-6 text-center">Why Choose CoreNet?</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="text-center">
-              <div className="text-4xl mb-2">🎯</div>
-              <h4 className="font-bold text-xl mb-2">User-Focused</h4>
-              <p className="text-purple-100">Every app we build prioritizes exceptional user experience and engagement</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl mb-2">⚡</div>
-              <h4 className="font-bold text-xl mb-2">Fast & Reliable</h4>
-              <p className="text-purple-100">Optimized performance that loads within seconds across all devices</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl mb-2">🔧</div>
-              <h4 className="font-bold text-xl mb-2">Full Support</h4>
-              <p className="text-purple-100">Comprehensive training and ongoing technical support with SLA</p>
-            </div>
-          </div>
-        </div>
-
-        {/* CTA Section */}
-        <div className="bg-white rounded-lg shadow-lg p-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">
-            Ready to Build Your Mobile App?
-          </h2>
-          <p className="text-lg text-gray-600 mb-6">
-            Let's transform your vision into a powerful mobile experience that engages users and drives business growth.
-          </p>
-          <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg transition-colors">
-            Start Your Project Today
-          </button>
-        </div>
+          <a
+            href="/contact"
+            className="inline-flex justify-center bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-8 rounded-xl transition"
+          >
+            Schedule Consultation
+          </a>
+        </section>
       </div>
     </main>
   );

@@ -133,6 +133,44 @@ export default function ISPServicesPage() {
           </div>
         </section>
 
+        <section className="mt-12 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-10">
+          <div className="grid lg:grid-cols-2 gap-8 items-center">
+            <div className="rounded-3xl overflow-hidden border border-gray-100">
+              <video
+                className="w-full h-[320px] object-cover"
+                src="/hero_background/data_center.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              />
+            </div>
+
+            <div>
+              <div className="text-xs font-semibold tracking-wider text-blue-700 uppercase mb-2">
+                Our Network
+              </div>
+
+              <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-4">
+                Fast, reliable internet built for real work
+              </h3>
+
+              <p className="text-gray-700 leading-relaxed mb-4">
+                CoreNet ISP delivers stable connectivity for homes, offices, and
+                growing businesses. From streaming and calls to cloud apps and
+                large file work, our network is designed to stay smooth during
+                peak hours too.
+              </p>
+
+              <p className="text-gray-700 leading-relaxed">
+                With strong routing, proactive monitoring, and quick support,
+                you get speed you can feel and uptime you can trust.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Section 2: Dark overlay services grid like ref 2 */}
         <section className="mt-10 relative overflow-hidden rounded-3xl">
           <div
