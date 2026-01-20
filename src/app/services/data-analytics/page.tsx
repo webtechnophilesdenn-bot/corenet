@@ -1,281 +1,498 @@
+"use client";
+
+import {
+  FiUsers,
+  FiTarget,
+  FiClipboard,
+  FiBarChart2,
+  FiSettings,
+  FiCloud,
+  FiShield,
+  FiServer,
+  FiDatabase,
+  FiRefreshCw,
+  FiLayers,
+  FiCheckCircle,
+  FiTrendingUp,
+  FiPieChart,
+  FiSearch,
+  FiGrid,
+  FiActivity,
+} from "react-icons/fi";
+
 export default function DataAnalyticsPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      {/* Hero Section with Background Image */}
-      <div className="relative h-120 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r  z-10"></div>
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('https://m.media-amazon.com/images/S/pv-target-images/b76482246ffbb8766e923069b9c6c190766ffaf8b799687290d4f16f95fe57b1._SX1080_FMjpg_.jpg')`,}}
-        ></div>
-        <div className="relative z-20 max-w-6xl mx-auto px-8 h-full flex flex-col justify-center">
-          <h1 className="text-5xl font-bold text-white mb-4">Data Analytics Solutions</h1>
-          <p className="text-xl text-blue-100 max-w-3xl">
-            Transform raw data into actionable insights with our comprehensive analytics solutions that drive informed decision-making and strategic business growth
-          </p>
+    <main className="min-h-screen bg-gradient-to-br from-slate-50 to-indigo-50">
+      {/* Hero Section */}
+      <div className="relative bg-slate-950">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <div className="grid md:grid-cols-2 items-center h-[620px] gap-8">
+            {/* LEFT: Image */}
+            <div className="relative h-full flex items-center justify-center">
+              <img
+                src="/hero_background/data_analytics.jpeg"
+                alt="Data Analytics"
+                className="w-full max-w-lg md:max-w-xl lg:max-w-2xl object-contain"
+              />
+            </div>
+
+            {/* RIGHT: Content */}
+            <div className="text-white">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-semibold tracking-wider">
+                <span className="w-2 h-2 rounded-full bg-indigo-400" />
+                DATA ANALYTICS
+              </div>
+
+              <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-4">
+                Turn raw data into decisions you can trust
+              </h1>
+
+              <p className="text-slate-200 max-w-xl leading-relaxed">
+                We help teams collect, clean, model, and visualize data so
+                leaders can act with confidence. From dashboards to predictive
+                insights, our analytics work focuses on clarity, accuracy, and
+                measurable business outcomes.
+              </p>
+
+              {/* Highlights */}
+              <div className="mt-6 flex flex-wrap gap-3">
+                {[
+                  "Dashboards and BI",
+                  "Data Engineering",
+                  "Reporting Automation",
+                  "Predictive Insights",
+                ].map((t) => (
+                  <div
+                    key={t}
+                    className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-sm"
+                  >
+                    {t}
+                  </div>
+                ))}
+              </div>
+
+              {/* CTAs */}
+              <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                <a
+                  href="/contact-us"
+                  className="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 font-semibold transition"
+                >
+                  Request a Consultation
+                </a>
+
+                <a
+                  href="/contact-us"
+                  className="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 font-semibold transition"
+                >
+                  Talk to an Expert
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-8 py-12">
-        
-        {/* Introduction */}
-        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">
-            Data-Driven Decision Making
-          </h2>
-          <p className="text-lg text-gray-700 leading-relaxed mb-4">
-            At CoreNet, we specialize in turning complex data into clear, actionable insights. Our data analytics solutions empower businesses to uncover hidden patterns, predict trends, and make strategic decisions with confidence.
+      <div className="max-w-6xl mx-auto px-2 sm:px-3 md:px-4 py-10">
+        {/* Section 1: Clean intro */}
+        <section className="pb-10">
+          <div className="max-w-6xl">
+            <div className="text-xs font-semibold tracking-wider text-indigo-700 uppercase mb-2">
+              Data analytics services
+            </div>
+
+            <h2 className="text-4xl font-extrabold text-gray-900 leading-tight mb-4">
+              Build reporting that is fast, reliable, and actually used
+            </h2>
+
+            <p className="text-gray-700 leading-relaxed mb-4">
+              If your reporting is slow, inconsistent, or spread across too many
+              sheets, teams lose trust in data. We help you set up clean data
+              pipelines, standard metrics, and dashboards that match how your
+              business operates.
+            </p>
+
+            <p className="text-gray-700 leading-relaxed">
+              You get a strong foundation: source mapping, data modeling,
+              governance, and a step by step plan your team can run with.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 2: Process + illustration split */}
+        <section className="mt-6 grid lg:grid-cols-2 gap-10 items-start">
+          <div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-3">
+              From data chaos to trusted insights
+            </h3>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              We map where data lives today, fix gaps, define metrics, and build
+              a clean analytics layer. If you want, we also implement and manage
+              the rollout including dashboards, access, and training.
+            </p>
+
+            <div className="space-y-3 mt-6">
+              {[
+                "Data discovery and current state assessment",
+                "Source system mapping and KPI definition",
+                "Data cleaning rules and validation checks",
+                "Data modeling and analytics layer design",
+                "Dashboard design and reporting automation",
+                "Access control, governance, and auditability",
+                "Documentation, handover, and data dictionary",
+              ].map((t, i) => (
+                <div key={`${i}-${t}`} className="flex items-start gap-3">
+                  <span className="mt-1.5 w-2 h-2 rounded-full bg-indigo-600" />
+                  <p className="text-gray-700 leading-relaxed">{t}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-3xl bg-white border border-gray-100 shadow-sm overflow-hidden">
+            <div className="p-6 md:p-8">
+              <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-slate-50 to-indigo-50 border border-gray-100">
+                <img
+                  src="/hero_background/data_analytics_illustration.jpeg"
+                  alt="Data analytics illustration"
+                  className="w-full h-[220px] md:h-[360px] object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 3: Improve with confidence */}
+        <section className="mt-12 rounded-3xl bg-white border border-gray-100 shadow-sm overflow-hidden">
+          <div className="grid lg:grid-cols-2 gap-8 items-center p-6 md:p-10">
+            <div className="relative">
+              <div className="absolute -inset-10 bg-indigo-100/60 blur-2xl rounded-full" />
+
+              <div className="relative rounded-3xl bg-gradient-to-br from-slate-50 to-white border border-gray-100 overflow-hidden">
+                <video
+                  src="/hero_background/data_analytics.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-[520px] object-cover"
+                  preload="metadata"
+                />
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">
+                Improve with confidence
+              </h3>
+              <p className="text-lg font-semibold text-indigo-700 mb-4">
+                Cleaner data, faster answers, better decisions
+              </p>
+
+              <p className="text-gray-700 leading-relaxed mb-6">
+                We focus on outcomes: consistent metrics, faster reporting, and
+                dashboards people trust. You get practical improvements that
+                reduce manual work and make performance visible.
+              </p>
+
+              <div className="space-y-3">
+                {[
+                  "Unified dashboards with consistent KPIs",
+                  "Automated reporting instead of manual spreadsheets",
+                  "Data quality checks and validation rules",
+                  "Governance, access control, and audit trails",
+                  "Ongoing analytics support when needed",
+                ].map((t) => (
+                  <div key={t} className="flex items-start gap-3">
+                    <span className="mt-1 text-indigo-700 font-bold">✓</span>
+                    <p className="text-gray-700">{t}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                <a
+                  href="/contact"
+                  className="inline-flex justify-center px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold transition"
+                >
+                  Book a Consultation
+                </a>
+                <a
+                  href="/contact"
+                  className="inline-flex justify-center px-6 py-3 rounded-xl border border-indigo-200 text-indigo-700 font-semibold hover:bg-indigo-50 transition"
+                >
+                  Talk to an Expert
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 4: Benefits strip */}
+        <section className="mt-12 w-full overflow-hidden">
+          <div
+            className="relative w-full"
+            style={{
+              backgroundImage: "url('/hero_background/data_analytics.jpeg')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            <div className="absolute inset-0 bg-slate-950/55" />
+
+            <div className="relative z-10 px-6 sm:px-5 md:px-7 py-12">
+              <div className="text-center max-w-5xl mx-auto">
+                <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+                  <span className="text-orange-400">Data Analytics</span> that
+                  helps you
+                  <br className="hidden md:block" />
+                  see clearly and act faster
+                </h2>
+                <div className="w-16 h-1 bg-orange-400 mx-auto mt-6 rounded-full" />
+              </div>
+
+              <div className="mt-14 max-w-6xl mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
+                  {[
+                    { title: "Trusted Metrics", icon: "✅" },
+                    { title: "Less Manual Work", icon: "🧾" },
+                    { title: "Faster Reporting", icon: "⚡" },
+                    { title: "Better Visibility", icon: "👀" },
+                    { title: "Risk Control", icon: "🛡️" },
+                  ].map((item, idx) => (
+                    <div
+                      key={item.title}
+                      className={`relative px-10 py-10 text-center ${
+                        idx !== 0 ? "lg:border-l lg:border-white/15" : ""
+                      }`}
+                    >
+                      {idx !== 0 && (
+                        <span className="absolute left-0 top-1/2 hidden lg:block h-24 -translate-y-1/2 border-l border-dashed border-white/25" />
+                      )}
+
+                      <div className="text-3xl mb-4 text-white/90">
+                        {item.icon}
+                      </div>
+                      <div className="text-xl font-extrabold text-white leading-snug">
+                        {item.title}
+                      </div>
+
+                      <span className="absolute left-10 right-10 bottom-0 hidden lg:block border-b border-dashed border-white/25" />
+                    </div>
+                  ))}
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
+                  {[
+                    { title: "Dashboards", icon: "📊" },
+                    { title: "Automation", icon: "🤖" },
+                    { title: "Data Quality", icon: "🧼" },
+                    { title: "Governance", icon: "📌" },
+                    { title: "Support", icon: "🧰" },
+                  ].map((item, idx) => (
+                    <div
+                      key={item.title}
+                      className={`relative px-5 py-5 text-center ${
+                        idx !== 0 ? "lg:border-l lg:border-white/15" : ""
+                      }`}
+                    >
+                      {idx !== 0 && (
+                        <span className="absolute left-0 top-1/2 hidden lg:block h-24 -translate-y-1/2 border-l border-dashed border-white/25" />
+                      )}
+
+                      <div className="text-3xl mb-4 text-white/90">
+                        {item.icon}
+                      </div>
+                      <div className="text-xl font-extrabold text-white leading-snug">
+                        {item.title}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 5: Why work with us */}
+        <section className="mt-12">
+          <div className="text-center">
+            <h3 className="text-4xl font-extrabold text-gray-900">
+              Why work with us
+            </h3>
+            <div className="w-16 h-1 bg-orange-400 mx-auto mt-4 mb-6 rounded-full" />
+            <p className="text-gray-700 leading-relaxed max-w-4xl mx-auto">
+              We focus on business outcomes and trustworthy reporting, not
+              dashboards that look good but nobody uses. Expect clean metrics,
+              strong governance, and practical implementation.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 6: Complete 360 solutions (analytics services) */}
+        <section className="mt-26">
+          <div className="text-center mb-12">
+            <h3 className="text-4xl md:text-4xl font-extrabold text-gray-900">
+              Complete 360° data analytics
+            </h3>
+            <div className="w-14 h-1 bg-orange-500 mx-auto mt-4 rounded-full" />
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+            {[
+              {
+                icon: FiBarChart2,
+                title: "BI Dashboards",
+                desc: "Executive and operational dashboards built on consistent KPIs.",
+              },
+              {
+                icon: FiDatabase,
+                title: "Data Engineering",
+                desc: "Pipelines, ETL, modeling, and reliable data foundations.",
+              },
+              {
+                icon: FiRefreshCw,
+                title: "Reporting Automation",
+                desc: "Automate recurring reports and reduce manual spreadsheet work.",
+              },
+              {
+                icon: FiGrid,
+                title: "Data Modeling",
+                desc: "Clean metric definitions and models that scale across teams.",
+              },
+              {
+                icon: FiSearch,
+                title: "Analytics Discovery",
+                desc: "Map sources, define KPIs, and identify quick wins with impact.",
+              },
+              {
+                icon: FiShield,
+                title: "Governance and Access",
+                desc: "Role based access, auditability, and controlled data usage.",
+              },
+              {
+                icon: FiTrendingUp,
+                title: "Predictive Insights",
+                desc: "Forecasting, trends, and practical models for decision support.",
+              },
+              {
+                icon: FiPieChart,
+                title: "Business Performance",
+                desc: "Revenue, margin, funnel, and operational analytics with clarity.",
+              },
+              {
+                icon: FiClipboard,
+                title: "Data Dictionary and SOPs",
+                desc: "Documentation, definitions, and runbooks your team can maintain.",
+              },
+              {
+                icon: FiUsers,
+                title: "Stakeholder Enablement",
+                desc: "Training, onboarding, and adoption so dashboards get used.",
+              },
+              {
+                icon: FiCloud,
+                title: "Cloud Data Platforms",
+                desc: "Guidance on warehousing, lakehouse, and scalable architectures.",
+              },
+              {
+                icon: FiCheckCircle,
+                title: "Data Quality Checks",
+                desc: "Validation rules, alerts, and monitoring for trusted reporting.",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="bg-white rounded-2xl p-8 text-center border border-gray-100"
+              >
+                <div className="flex justify-center mb-4">
+                  <item.icon className="text-orange-500 w-10 h-10" />
+                </div>
+
+                <h4 className="text-lg font-bold text-gray-900 mb-2">
+                  {item.title}
+                </h4>
+
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 7: Advantages split */}
+        <section className="mt-14 rounded-3xl bg-gradient-to-br from-slate-50 to-indigo-50 border border-gray-100 overflow-hidden">
+          <div className="grid lg:grid-cols-2 gap-8 items-center p-6 md:p-10">
+            <div>
+              <h3 className="text-3xl font-extrabold text-gray-900 mb-4">
+                Analytics advantages you can measure
+              </h3>
+
+              <div className="space-y-3">
+                {[
+                  "One version of truth for core business metrics",
+                  "Faster reporting with less manual effort",
+                  "Better visibility into performance, risk, and bottlenecks",
+                  "Data quality checks that prevent wrong decisions",
+                  "Governance for safe access and controlled reporting",
+                  "Cleaner documentation and team handover",
+                  "Ongoing analytics support when needed",
+                ].map((t) => (
+                  <div key={t} className="flex items-start gap-3">
+                    <span className="mt-1 text-indigo-700 font-bold">•</span>
+                    <p className="text-gray-700">{t}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                <a
+                  href="/contact"
+                  className="inline-flex justify-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-7 py-3 rounded-xl transition"
+                >
+                  Connect with us now
+                </a>
+                <a
+                  href="/contact"
+                  className="inline-flex justify-center border border-indigo-200 text-indigo-700 font-semibold px-7 py-3 rounded-xl hover:bg-white/60 transition"
+                >
+                  Request a Quote
+                </a>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="absolute -inset-10 bg-indigo-200/40 blur-2xl rounded-full" />
+              <div className="relative rounded-3xl bg-white border border-gray-100 shadow-sm overflow-hidden">
+                <img
+                  src="/hero_background/data_analytics_advantages.jpeg"
+                  alt="Data analytics advantages"
+                  className="w-full h-[440px] object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Final CTA */}
+        <section className="mt-14 rounded-3xl bg-white border border-gray-100 shadow-sm p-8 md:p-10 text-center">
+          <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">
+            Need a clear analytics plan for 2026?
+          </h3>
+          <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed mb-7">
+            Share your sources, reporting needs, and goals. We will propose a
+            roadmap that improves data quality, speeds up reporting, and builds
+            dashboards your teams trust.
           </p>
-          <p className="text-lg text-gray-700 leading-relaxed">
-            From data collection to visualization, we provide end-to-end analytics services tailored to your unique business needs, ensuring you extract maximum value from your data assets.
-          </p>
-        </div>
-
-        {/* Core Services Grid */}
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-            Comprehensive Analytics Services
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            
-            {/* Business Intelligence */}
-            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
-                  <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold text-gray-800">Business Intelligence</h3>
-              </div>
-              <p className="text-gray-600 mb-4">
-                Interactive dashboards and reports that provide real-time insights into business performance.
-              </p>
-              <div className="space-y-2">
-                <div className="flex items-start">
-                  <span className="text-blue-600 mr-2">✓</span>
-                  <span className="text-gray-700">Interactive dashboards</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-blue-600 mr-2">✓</span>
-                  <span className="text-gray-700">KPI tracking & reporting</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-blue-600 mr-2">✓</span>
-                  <span className="text-gray-700">Executive reporting</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Predictive Analytics */}
-            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mr-4">
-                  <svg className="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold text-gray-800">Predictive Analytics</h3>
-              </div>
-              <p className="text-gray-600 mb-4">
-                Advanced analytics using machine learning to forecast trends and predict future outcomes.
-              </p>
-              <div className="space-y-2">
-                <div className="flex items-start">
-                  <span className="text-indigo-600 mr-2">✓</span>
-                  <span className="text-gray-700">Demand forecasting</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-indigo-600 mr-2">✓</span>
-                  <span className="text-gray-700">Risk assessment models</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-indigo-600 mr-2">✓</span>
-                  <span className="text-gray-700">Customer behavior prediction</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Data Visualization */}
-            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
-                  <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold text-gray-800">Data Visualization</h3>
-              </div>
-              <p className="text-gray-600 mb-4">
-                Transform complex data into intuitive, visually compelling stories that drive understanding.
-              </p>
-              <div className="space-y-2">
-                <div className="flex items-start">
-                  <span className="text-purple-600 mr-2">✓</span>
-                  <span className="text-gray-700">Interactive charts & graphs</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-purple-600 mr-2">✓</span>
-                  <span className="text-gray-700">Geospatial mapping</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-purple-600 mr-2">✓</span>
-                  <span className="text-gray-700">Real-time data streaming</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Data Engineering */}
-            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
-                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold text-gray-800">Data Engineering</h3>
-              </div>
-              <p className="text-gray-600 mb-4">
-                Build robust data pipelines and infrastructure for efficient data processing and storage.
-              </p>
-              <div className="space-y-2">
-                <div className="flex items-start">
-                  <span className="text-green-600 mr-2">✓</span>
-                  <span className="text-gray-700">ETL/ELT pipeline design</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-green-600 mr-2">✓</span>
-                  <span className="text-gray-700">Data warehouse solutions</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-green-600 mr-2">✓</span>
-                  <span className="text-gray-700">Big data processing</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Analytics Tools */}
-        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-            Our Analytics Technology Stack
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="flex flex-col items-center p-4">
-              <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-3">
-                <span className="text-yellow-600 font-bold text-xl">PBI</span>
-              </div>
-              <span className="text-gray-700 font-medium text-center">Power BI</span>
-            </div>
-            <div className="flex flex-col items-center p-4">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-3">
-                <span className="text-blue-600 font-bold text-xl">TBL</span>
-              </div>
-              <span className="text-gray-700 font-medium text-center">Tableau</span>
-            </div>
-            <div className="flex flex-col items-center p-4">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-3">
-                <span className="text-green-600 font-bold text-xl">QK</span>
-              </div>
-              <span className="text-gray-700 font-medium text-center">Qlik</span>
-            </div>
-            <div className="flex flex-col items-center p-4">
-              <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-3">
-                <span className="text-red-600 font-bold text-xl">Lk</span>
-              </div>
-              <span className="text-gray-700 font-medium text-center">Looker</span>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-4">
-            <div className="flex flex-col items-center p-4">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-3">
-                <span className="text-purple-600 font-bold text-xl">Py</span>
-              </div>
-              <span className="text-gray-700 font-medium text-center">Python/R</span>
-            </div>
-            <div className="flex flex-col items-center p-4">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-3">
-                <span className="text-orange-600 font-bold text-xl">SQL</span>
-              </div>
-              <span className="text-gray-700 font-medium text-center">SQL Databases</span>
-            </div>
-            <div className="flex flex-col items-center p-4">
-              <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-3">
-                <span className="text-indigo-600 font-bold text-xl">SNW</span>
-              </div>
-              <span className="text-gray-700 font-medium text-center">Snowflake</span>
-            </div>
-            <div className="flex flex-col items-center p-4">
-              <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mb-3">
-                <span className="text-teal-600 font-bold text-xl">Dbt</span>
-              </div>
-              <span className="text-gray-700 font-medium text-center">dbt</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Success Metrics */}
-        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-            Measurable Business Impact
-          </h2>
-          <div className="grid md:grid-cols-4 gap-6">
-            <div className="text-center p-4">
-              <div className="text-4xl font-bold text-blue-600 mb-2">30%+</div>
-              <p className="text-gray-700">Improvement in operational efficiency</p>
-            </div>
-            <div className="text-center p-4">
-              <div className="text-4xl font-bold text-blue-600 mb-2">25%+</div>
-              <p className="text-gray-700">Increase in revenue from insights</p>
-            </div>
-            <div className="text-center p-4">
-              <div className="text-4xl font-bold text-blue-600 mb-2">40%+</div>
-              <p className="text-gray-700">Faster decision-making process</p>
-            </div>
-            <div className="text-center p-4">
-              <div className="text-4xl font-bold text-blue-600 mb-2">50%+</div>
-              <p className="text-gray-700">Reduction in manual reporting time</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Key Features */}
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-lg shadow-xl p-8 text-white mb-8">
-          <h2 className="text-3xl font-bold mb-6 text-center">Analytics That Deliver Results</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="text-center">
-              <div className="text-4xl mb-2">💡</div>
-              <h4 className="font-bold text-xl mb-2">Actionable Insights</h4>
-              <p className="text-blue-100">Clear, business-focused recommendations that drive decisions</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl mb-2">⚡</div>
-              <h4 className="font-bold text-xl mb-2">Real-Time Analytics</h4>
-              <p className="text-blue-100">Live data processing for immediate business intelligence</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl mb-2">📈</div>
-              <h4 className="font-bold text-xl mb-2">Scalable Solutions</h4>
-              <p className="text-blue-100">Grow from basic reporting to advanced AI-powered analytics</p>
-            </div>
-          </div>
-        </div>
-
-        {/* CTA Section */}
-        <div className="bg-white rounded-lg shadow-lg p-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">
-            Ready to Unlock the Power of Your Data?
-          </h2>
-          <p className="text-lg text-gray-600 mb-6">
-            Let CoreNet help you transform data into strategic advantages and drive measurable business growth.
-          </p>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors">
-            Start Your Analytics Journey
-          </button>
-        </div>
+          <a
+            href="/contact"
+            className="inline-flex justify-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-xl transition"
+          >
+            Schedule Consultation
+          </a>
+        </section>
       </div>
     </main>
   );

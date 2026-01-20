@@ -180,7 +180,7 @@ const Hero = () => {
               {/* Main Image Container - Larger */}
               <div className="relative bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600 rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/hero-ai-image.jpg"
+                  src="/home.jpeg"
                   alt="AI First Development"
                   width={800}
                   height={600}
